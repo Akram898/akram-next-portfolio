@@ -43,14 +43,14 @@ export const SectionTitle = styled.h2`
   padding: ${(props) => (props.main ? "58px 0 16px" : "0")};
 
   @media ${(props) => props.theme.breakpoints.md} {
-    font-size: ${(props) => (props.main ? "56px" : "48px")};
+    font-size: ${(props) => (props.main ? "56px" : "48px !important")};
     line-height: ${(props) => (props.main ? "56px" : "48px")};
     margin-bottom: 12px;
     padding: ${(props) => (props.main ? "40px 0 12px" : "0")};
   }
 
   @media ${(props) => props.theme.breakpoints.sm} {
-    font-size: 32px;
+    font-size: 43px !important;
     line-height: 40px;
     font-size: ${(props) => (props.main ? "28px" : "32px")};
     line-height: ${(props) => (props.main ? "32px" : "40px")};
@@ -175,9 +175,9 @@ export const SecondaryBtn = styled.button`
 
 export const ButtonBack = styled.div`
   width: ${({ alt }) => (alt ? "150px" : "262px")};
-  height: ${({ alt }) => (alt ? "52px" : "64px")};
+  height: ${({ alt }) => (alt ? "52px" : "55px")};
   border-radius: 50px;
-  font-size: ${({ alt }) => (alt ? "20px" : "24px")};
+  font-size: ${({ alt }) => (alt ? "17px" : "19px")};
   font-weight: 600;
   display: flex;
   align-items: center;
@@ -196,15 +196,15 @@ export const ButtonBack = styled.div`
 
   @media ${(props) => props.theme.breakpoints.md} {
     width: ${({ alt }) => (alt ? "150px" : "184px")};
-    height: ${({ alt }) => (alt ? "52px" : "48px")};
-    font-size: ${({ alt }) => (alt ? "20px" : "16px")};
+    height: ${({ alt }) => (alt ? "55px" : "52px")};
+    font-size: ${({ alt }) => (alt ? "22px" : "18px")};
     margin-bottom: ${({ alt }) => (alt ? "0" : "64px")};
   }
 
   @media ${(props) => props.theme.breakpoints.sm} {
     width: 100%;
-    height: 32px;
-    font-size: 14px;
+    height: 55px;
+    font-size: 20px;
     margin-bottom: ${({ alt }) => (alt ? "0" : "32px")};
   }
 `;
@@ -225,7 +225,7 @@ export const ButtonFront = styled.button`
       : "linear-gradient(270deg, #13ADC7 0%, #945DD6 100%)"};
   opacity: ${({ disabled }) => (disabled ? ".5" : "1")};
   transition: 0.4s ease;
-  font-size: ${({ alt }) => (alt ? "20px" : "24px")};
+  font-size: ${({ alt }) => (alt ? "18px" : "19px")};
   font-weight: 600;
   align-items: center;
   justify-content: center;
@@ -259,7 +259,7 @@ export const ButtonFront = styled.button`
   }
 
   @media ${(props) => props.theme.breakpoints.sm} {
-    font-size: 14px;
+    font-size: 17.5px;
   }
 `;
 
