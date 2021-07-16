@@ -33,6 +33,30 @@ const GlobalStyles = createGlobalStyle`
   li{
     list-style: none;
   }
+  /* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+ background: linear-gradient(90deg, rgba(144,46,132,.7) 0%, rgba(44,11,77,.7) 50%, rgba(30,10,68,.7) 100%);
+
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background:linear-gradient(
+    270deg
+    ,#13ADC7 0%,#945DD6 100%);
+    border-radius: 5px;
+  }
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    270deg
+    ,#F46737 0%,#945DD6 100%) !important; 
+}
 
 `;
 
