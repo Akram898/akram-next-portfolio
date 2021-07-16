@@ -93,6 +93,12 @@
     align-items: center;
     justify-content: center;
   }
+  .right,
+  .left {
+    -ms-flex: 100%;
+    flex: 100%;
+    max-width: 100%;
+  }
 }
 @media screen and (max-width: 650px) {
   .title {
@@ -101,6 +107,7 @@
     justify-content: center;
     text-align: center;
   }
+
   // .svgImg {
   //   position: absolute !important;
   // }
