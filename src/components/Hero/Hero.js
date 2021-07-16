@@ -23,19 +23,22 @@ const Hero = (props) => {
     });
   }, []);
   return (
-    <Section row nopadding>
+    <Section row nopadding className={styles.main}>
       <LeftSection className={styles.leftSec}>
-        <SectionTitle>
-          Hi There, My name is <br />
-          Akram <br />
-          I'm A <span ref={textRef}> &nbsp;</span>
-        </SectionTitle>
-        <div style={{ display: "flex;", justifyContent: "space-between" }}>
+        <div className={styles.title}>
+          <SectionTitle>
+            Hi There, My name is <br />
+            Akram <br />
+            I'm A <span ref={textRef}> &nbsp;</span>
+          </SectionTitle>
+        </div>
+        <div className={styles.btnsDiv}>
           <Button onClick={() => (window.location = "#projects")}>
             Check My Work
           </Button>
-          <Button onClick={() => (window.location = "#projects")}>
-            Get CV
+
+          <Button onClick={() => (window.location = "#contact")}>
+            Contact
           </Button>
         </div>
       </LeftSection>

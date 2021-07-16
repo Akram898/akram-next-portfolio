@@ -1,10 +1,16 @@
 import styled from "styled-components";
 
 export const Img = styled.img`
-  width: 300px;
+  width: 100%;
   height: 200px;
   object-fit: cover;
   overflow: hidden;
+  -webkit-border-top-left-radius: 10px;
+  -webkit-border-top-right-radius: 10px;
+  -moz-border-radius-topleft: 10px;
+  -moz-border-radius-topright: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 `;
 
 export const GridContainer = styled.section`
@@ -28,6 +34,12 @@ export const BlogCard = styled.div`
   text-align: center;
   width: 300px;
   height: 500px;
+  background: linear-gradient(
+    229deg,
+    rgb(99 99 99) 0%,
+    rgb(27 21 56) 50%,
+    rgb(70 58 60) 100%
+  );
   @media ${(props) => props.theme.breakpoints.sm} {
     width: 100%;
   }
@@ -42,16 +54,17 @@ export const HeaderThree = styled.h3`
   font-weight: 500;
   letter-spacing: 2px;
   color: #9cc9e3;
-  padding: 0.5rem 0;
-  font-size: ${(props) => (props.title ? "3rem" : "2rem")};
+  padding: 1.2rem 0 0.5rem 0;
+  font-size: ${(props) => (props.title ? "2.25rem" : "2rem")};
 `;
 
 export const Hr = styled.hr`
   width: 50px;
   height: 3px;
-  margin: 9px auto;
+  margin: 4px auto 14px auto;
   border: 0;
-  background: #d0bb57;
+  //background: #d0bb57;
+  background: linear-gradient(270deg, #f46737 0%, #945dd6 100%);
 `;
 
 export const Intro = styled.div`
@@ -71,6 +84,7 @@ export const CardInfo = styled.p`
   font-size: 1.5rem;
   // line-height: 24px;
   text-align: center;
+  height: 7rem;
   @media ${(props) => props.theme.breakpoints.sm} {
     padding: 0.3rem;
   }
@@ -100,7 +114,7 @@ export const ExternalLinks = styled.a`
 export const TagList = styled.ul`
   display: flex;
   justify-content: space-around;
-  padding: 2rem;
+  padding: 1rem;
 `;
 export const Tag = styled.li`
   color: #d8bfbf;

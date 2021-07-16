@@ -34,13 +34,16 @@ const Footer = () => {
           <Slogan>Akram Portfolio</Slogan>
         </CompanyContainer>
         <SocialContainer>
-          <SocialIcons href="https://github.com/Akram898">
+          <SocialIcons href="https://github.com/Akram898" target="_blank">
             <AiFillGithub size="3rem" />
           </SocialIcons>
-          <SocialIcons href="https://www.linkedin.com/in/ahmedakram/">
+          <SocialIcons
+            href="https://www.linkedin.com/in/ahmedakram/"
+            target="_blank"
+          >
             <AiFillLinkedin size="3rem" />
           </SocialIcons>
-          <SocialIcons href="#contact">
+          <SocialIcons href="mailto:akram78787@gmail.com">
             <AiFillMail size="3rem" />
           </SocialIcons>
         </SocialContainer>

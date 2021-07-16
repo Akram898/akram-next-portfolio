@@ -17,6 +17,7 @@ import {
   NavLink,
   SocialIcons,
 } from "./HeaderStyles";
+// import styles from "../../styles/topBar.module.scss";
 
 const Header = () => (
   <Container>
@@ -64,15 +65,28 @@ const Header = () => (
       </li>
     </Div2>
     <Div3>
-      <SocialIcons href="https://github.com/Akram898">
+      <SocialIcons href="https://github.com/Akram898" target="_blank">
         <AiFillGithub size="3rem" />
       </SocialIcons>
-      <SocialIcons href="https://www.linkedin.com/in/ahmedakram/">
+      <SocialIcons
+        href="https://www.linkedin.com/in/ahmedakram/"
+        target="_blank"
+      >
         <AiFillLinkedin size="3rem" />
       </SocialIcons>
       <SocialIcons href="#contact">
         <AiFillMail size="3rem" />
       </SocialIcons>
+      {/* <div className={styles.right}>
+        <div
+          className={styles.hamburger}
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          <span className={styles.line1}></span>
+          <span className={styles.line2}></span>
+          <span className={styles.line3}></span>
+        </div>
+      </div> */}
     </Div3>
   </Container>
 );

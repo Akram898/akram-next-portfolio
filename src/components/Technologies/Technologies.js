@@ -13,16 +13,30 @@ import {
   ListParagraph,
   ListTitle,
 } from "./TechnologiesStyles";
+import styles from "../../styles/hero.module.scss";
 
 const Technologies = () => (
-  <Section id="tech">
-    <SectionDivider divider />
-    <div align="center">
-      <SectionTitle>About</SectionTitle>
-      <SectionText>
-        I'm A Technology lover, always trying to be a better
-        Developer/Programmer/Human.
-      </SectionText>
+  <Section>
+    <SectionDivider divider id="about" />
+    <div className={styles.row}>
+      <div className={styles.left}>
+        <SectionTitle>About</SectionTitle>
+        <SectionText>
+          I'm A Technology lover, always trying to be a better
+          Developer/Programmer/Human.
+        </SectionText>
+      </div>
+      <div className={styles.right}>
+        <img
+          src="images/develop.svg"
+          alt="about"
+          loading="lazy"
+          className={styles.img}
+        />
+      </div>
+    </div>
+
+    <div className={styles.techDiv} id="tech">
       <SectionTitle>Technologies</SectionTitle>
 
       <List>

@@ -10,13 +10,13 @@ export const projects = [
   //   id: 0,
   // },
   {
-    title: "E-Commerce",
+    title: "Amazon Clone",
     description:
-      "A E-Commerce Website with payment functionality and User authentication.",
-    image: "/images/2.png",
+      "E-Commerce Website with payment functionality and User authentication.",
+    image: "/images/amazon-clone.PNG",
     tags: ["React", "Next JS", "Tailwilnd CSS"],
-    source: "https://google.com",
-    visit: "https://gebhaly-task-nine.vercel.app/",
+    source: "https://github.com/Akram898/new-amazon-clone",
+    visit: "https://new-amazon-clone.vercel.app/",
     id: 0,
   },
   {
@@ -39,29 +39,30 @@ export const projects = [
   //   id: 2,
   // },
   {
-    title: "Gibbons Motor Toys Store",
+    title: "Movies App",
+    description:
+      "Movies and series Web Application shows the new movies and shows and search functionality",
+    image: "/images/movies.PNG",
+    tags: ["React", "Sass", "Material UI", "JS"],
+    source: "https://github.com/Akram898/react-movies-app",
+    visit: "https://react-movies-tv.netlify.app/",
+    id: 2,
+  },
+  {
+    title: "Motortoys Store",
     description: "Online Store for Motor Marine & Powersports",
     image: "/images/Capture-2.JPG",
     tags: ["HTML", "Css", "BootStrap", "JS"],
     source: "https://github.com/Akram898/",
     visit: "http://gibbons-marine-new.simplywebeditor.com/",
-    id: 2,
-  },
-  {
-    title: "Movies App",
-    description:
-      "Movies and series app shows the new movies and shows and search functionality",
-    image: "/images/movies.PNG",
-    tags: ["React", "Sass", "Material UI", "JS"],
-    source: "https://github.com/Akram898/react-movies-app",
-    visit: "https://react-movies-tv.netlify.app/",
     id: 3,
   },
+
   {
     title: "Breaking Bad App",
     description: "Show the cast of Breaking Bad using API",
     image: "/images/br.PNG",
-    tags: ["React", "Sass", "Material UI", "JS"],
+    tags: ["React", "Css", "JS"],
     source: "https://github.com/Akram898/react-breaking-bad-show",
     visit: "https://react-breaking-bad-show.netlify.app/",
     id: 4,
