@@ -15,6 +15,7 @@ import {
 } from "./ProjectsStyles";
 import {
   Section,
+  ProjectSection,
   SectionDivider,
   SectionTitle,
 } from "../../styles/GlobalComponents";
@@ -24,7 +25,11 @@ import { BsBoxArrowUpRight } from "react-icons/bs";
 import styles from "../../styles/hero.module.scss";
 
 const Projects = () => (
-  <Section nopadding id="projects">
+  <ProjectSection
+    nopadding
+    id="projects"
+    style={{ maxWidth: "100% !important;" }}
+  >
     <SectionDivider />
     <div align="center">
       <SectionTitle main>Projects</SectionTitle>
@@ -64,7 +69,7 @@ const Projects = () => (
         );
       })}
     </GridContainer>
-  </Section>
+  </ProjectSection>
 );
 
 export default Projects;

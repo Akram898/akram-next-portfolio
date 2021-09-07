@@ -98,7 +98,7 @@ export const projects = [
     title: "Yalla Parking Clone",
     description: "Find Parking space around Dubai",
     image: "/images/yalla2.PNG",
-    tags: ["React JS", "Next JS", "SASS"],
+    tags: ["HTML", "CSS", "Google Maps API", "Javascript"],
     source: "https://github.com/Akram898/",
     visit: "https://dashop-7af56.firebaseapp.com/",
     id: 8,

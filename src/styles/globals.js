@@ -85,17 +85,17 @@ const GlobalStyles = createGlobalStyle`
 }
 
 
-.ityped-cursor {
-  -webkit-animation: ${blink} 1s infinite;
-  -moz-animation: ${blink} 1s infinite;
-  animation: ${blink} 1s infinite;
-  animation-direction: alternate;
-  position: relative;
-  top: 0;
-  animation: ${blink};
-  animation-duration: 3s;
-  animation-fill-mode: infinite;
-}
+// .ityped-cursor {
+//   -webkit-animation: ${blink} 1s infinite;
+//   -moz-animation: ${blink} 1s infinite;
+//   animation: ${blink} 1s infinite;
+//   animation-direction: alternate;
+//   position: relative;
+//   top: 0;
+//   animation: ${blink};
+//   animation-duration: 3s;
+//   animation-fill-mode: infinite;
+// }
 
 
 

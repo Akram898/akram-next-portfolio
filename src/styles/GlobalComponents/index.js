@@ -25,6 +25,31 @@ export const Section = styled.section`
   }
 `;
 
+export const ProjectSection = styled.section`
+  display: ${(props) => (props.grid ? "grid" : "flex")};
+  flex-direction: ${(props) => (props.row ? "row" : "column")};
+  padding: ${(props) => (props.nopadding ? "0" : "32px 48px 0")};
+  margin: 0 auto;
+
+  max-width: 100%x;
+  box-sizing: content-box;
+  position: relative;
+  overflow: hidden;
+  grid-template-columns: 1fr 1fr;
+
+  @media ${(props) => props.theme.breakpoints.md} {
+    padding: 24px 48px 0;
+    flex-direction: column;
+  }
+
+  @media ${(props) => props.theme.breakpoints.sm} {
+    padding: ${(props) => (props.nopadding ? "0" : "0 8px 16px 8px")};
+
+    width: calc(100vw - 32px);
+    flex-direction: column;
+  }
+`;
+
 export const SectionTitle = styled.h2`
   font-weight: 800;
   line-height: 1.2 !important;
