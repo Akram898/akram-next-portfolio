@@ -1,6 +1,32 @@
 import { createGlobalStyle } from "styled-components";
 import { normalize } from "styled-normalize";
+import styled, { keyframes } from "styled-components";
+const blink = keyframes`
+50% {
+  opacity: 1;
+}
+100% {
+  opacity: 0;
+}
+}
 
+@-webkit-keyframes blink {
+50% {
+  opacity: 1;
+}
+100% {
+  opacity: 0;
+}
+}
+
+@-moz-keyframes blink {
+50% {
+  opacity: 1;
+}
+100% {
+  opacity: 0;
+}
+`;
 const GlobalStyles = createGlobalStyle`
   ${normalize};
 
@@ -57,6 +83,24 @@ const GlobalStyles = createGlobalStyle`
     270deg
     ,#F46737 0%,#945DD6 100%) !important; 
 }
+
+
+.ityped-cursor {
+  -webkit-animation: ${blink} 1s infinite;
+  -moz-animation: ${blink} 1s infinite;
+  animation: ${blink} 1s infinite;
+  animation-direction: alternate;
+  position: relative;
+  top: 0;
+  animation: ${blink};
+  animation-duration: 3s;
+  animation-fill-mode: infinite;
+}
+
+
+
+
+
 
 `;
 

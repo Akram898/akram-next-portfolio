@@ -28,6 +28,7 @@ const Acomplishments = () => (
         </Box>
         <Box>
           <BoxText>Phone</BoxText>
+          <BoxNum>(+971)561-798-031</BoxNum>
           <BoxNum>(+20)100-1509-722</BoxNum>
         </Box>
         {/* {data.map((card, index) => (
