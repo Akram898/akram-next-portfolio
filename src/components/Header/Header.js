@@ -80,7 +80,6 @@ const Header = () => (
       </SocialIcons>
       <SocialIcons href="tel:00971561798031">
         <AiFillPhone size="3rem" />
-        0561798031
       </SocialIcons>
       {/* <div className={styles.right}>
         <div

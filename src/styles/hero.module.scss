@@ -1,39 +1,39 @@
-.ityped-cursor {
-  -webkit-animation: blink 1s infinite;
-  -moz-animation: blink 1s infinite;
-  animation: blink 1s infinite;
-  animation-direction: alternate;
-}
-.leftSec {
-  margin-top: 31px;
-}
+// .ityped-cursor {
+//   -webkit-animation: blink 1s infinite;
+//   -moz-animation: blink 1s infinite;
+//   animation: blink 1s infinite;
+//   animation-direction: alternate;
+// }
+// .leftSec {
+//   margin-top: 31px;
+// }
 
-@keyframes blink {
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
+// @keyframes blink {
+//   50% {
+//     opacity: 1;
+//   }
+//   100% {
+//     opacity: 0;
+//   }
+// }
 
-@-webkit-keyframes blink {
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
+// @-webkit-keyframes blink {
+//   50% {
+//     opacity: 1;
+//   }
+//   100% {
+//     opacity: 0;
+//   }
+// }
 
-@-moz-keyframes blink {
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
+// @-moz-keyframes blink {
+//   50% {
+//     opacity: 1;
+//   }
+//   100% {
+//     opacity: 0;
+//   }
+// }
 .row {
   display: -ms-flexbox;
   display: flex;
