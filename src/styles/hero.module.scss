@@ -57,8 +57,12 @@
   padding-left: 15px;
 }
 .title {
+  min-width: 51vw;
+}
+.title {
   margin-top: 5.5vw;
 }
+
 @media screen and (min-width: 769px) {
   .btnsDiv {
     display: flex;
@@ -68,6 +72,16 @@
   }
   #projects {
     max-width: 100% !important;
+  }
+  .myImg {
+    position: absolute;
+    left: 40vw;
+    top: 8vw;
+
+    img {
+      width: 9vw;
+      border-radius: 50%;
+    }
   }
 }
 
@@ -105,7 +119,16 @@
     max-width: 100%;
   }
   .title {
-    margin-top: 15.5vw;
+    margin-top: 32.5vw;
+  }
+  .myImg {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2vw;
+    img {
+      width: 20vw;
+      border-radius: 50%;
+    }
   }
 }
 
@@ -115,7 +138,7 @@
     align-items: center !important;
     justify-content: center;
     text-align: center;
-    min-height: 51vw;
+    max-height: 23vw;
   }
 
   .svgImg {
@@ -152,10 +175,14 @@
     align-items: center !important;
     justify-content: center;
     text-align: center;
-    min-height: 102vw;
+    max-height: 85vw;
+    min-height: 87vw;
   }
   .title {
-    margin-top: 35.5vw;
+    margin-top: 51.5vw;
+  }
+  .svgImg {
+    top: 24vw;
   }
 }
 /*---------------------*/

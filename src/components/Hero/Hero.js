@@ -41,6 +41,9 @@ const Hero = (props) => {
             Contact
           </Button>
         </div>
+        <div className={styles.myImg}>
+          <img loading="lazy" src="/images/my-photo.jpg" alt="my-photo" />
+        </div>
       </LeftSection>
     </Section>
   );
