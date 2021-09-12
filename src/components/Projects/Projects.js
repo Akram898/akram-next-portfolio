@@ -33,6 +33,7 @@ const Projects = () => (
     <SectionDivider />
     <div align="center">
       <SectionTitle main>Projects</SectionTitle>
+      <p>Some of the projects that I've done</p>
     </div>
 
     <GridContainer className={styles.projSec}>

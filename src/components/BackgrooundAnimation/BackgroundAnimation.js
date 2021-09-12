@@ -1,7 +1,8 @@
 import React from "react";
-import "../../styles/hero.module.scss";
+
+import styles from "../../styles/hero.module.scss";
 const BackgroundAnimation = () => (
-  <div className="svgImg">
+  <div className={styles.svgImg}>
     <svg
       className="BgAnimation__svg"
       viewBox="0 0 602 602"

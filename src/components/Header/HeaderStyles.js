@@ -7,19 +7,30 @@ export const Container = styled.div`
   // grid-template-rows: 1fr;
   // grid-column-gap: 2rem;
   // padding: 1rem;
-  padding-top: 2rem;
-
+  padding: 1rem 0;
   display: flex;
   align-items: center;
   justify-content: space-around;
   margin-bottom: 40px;
+  position: fixed;
+  width: 100%;
+  z-index: 99;
+  background: linear-gradient(
+    270deg,#03191dcf 0%,#b53aafba 100%);
+  box-shadow: 0 2px 4px rgb(169 65 171 / 55%);
+}
+
+
 
   @media ${(props) => props.theme.breakpoints.sm} {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(2, 60px);
-    grid-column-gap: 0.5rem;
-    grid-row-gap: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    // display: grid;
+    // grid-template-columns: repeat(5, 1fr);
+    // grid-template-rows: repeat(2, 50px);
+    // grid-column-gap: 0.5rem;
+    // grid-row-gap: 0.5rem;
+    margin-bottom: 0px;
   }
 `;
 
