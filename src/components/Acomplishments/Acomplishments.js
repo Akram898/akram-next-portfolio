@@ -28,8 +28,19 @@ const Acomplishments = () => (
         </Box>
         <Box>
           <BoxText>Phone</BoxText>
-          <BoxNum>(+971)561-798-031</BoxNum>
-          <BoxNum>(+20)100-1509-722</BoxNum>
+          <BoxNum>
+            {" "}
+            <a className={styles.newLink} href="tel:+971561798031">
+              {" "}
+              +971561798031
+            </a>
+          </BoxNum>
+          <BoxNum>
+            {" "}
+            <a className={styles.newLink} href="tel:+201001509722">
+              +201001509722
+            </a>
+          </BoxNum>
         </Box>
         {/* {data.map((card, index) => (
         <Box key={index}>
