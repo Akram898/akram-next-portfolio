@@ -24,9 +24,6 @@ const Hero = (props) => {
   }, []);
   return (
     <>
-      <div className={styles.myImg}>
-        <img loading="lazy" src="/images/my-photo.jpg" alt="my-photo" />
-      </div>
       <Section row nopadding className={styles.main}>
         <LeftSection className={styles.leftSec}>
           <div className={styles.title}>
@@ -44,6 +41,9 @@ const Hero = (props) => {
             <Button onClick={() => (window.location = "#contact")}>
               Contact
             </Button>
+          </div>
+          <div className={styles.myImg}>
+            <img loading="lazy" src="/images/my-photo.jpg" alt="my-photo" />
           </div>
         </LeftSection>
       </Section>
