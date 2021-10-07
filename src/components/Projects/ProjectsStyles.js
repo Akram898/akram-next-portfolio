@@ -32,7 +32,7 @@ export const BlogCard = styled.div`
   border-radius: 10px;
   box-shadow: 3px 3px 20px rgba(80, 78, 78, 0.5);
   text-align: center;
-  width: 400px;
+  width: 30rem;
   height: 500px;
   background: linear-gradient(
     229deg,
