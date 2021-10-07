@@ -23,29 +23,31 @@ const Hero = (props) => {
     });
   }, []);
   return (
-    <Section row nopadding className={styles.main}>
-      <LeftSection className={styles.leftSec}>
-        <div className={styles.title}>
-          <SectionTitle>
-            Hi There, My name is <br />
-            Akram <br />
-            I'm A <span ref={textRef}> &nbsp;</span>
-          </SectionTitle>
-        </div>
-        <div className={styles.btnsDiv}>
-          <Button onClick={() => (window.location = "#projects")}>
-            Check My Work
-          </Button>
+    <>
+      <div className={styles.myImg}>
+        <img loading="lazy" src="/images/my-photo.jpg" alt="my-photo" />
+      </div>
+      <Section row nopadding className={styles.main}>
+        <LeftSection className={styles.leftSec}>
+          <div className={styles.title}>
+            <SectionTitle>
+              Hi There, My name is <br />
+              Akram <br />
+              I'm A <span ref={textRef}> &nbsp;</span>
+            </SectionTitle>
+          </div>
+          <div className={styles.btnsDiv}>
+            <Button onClick={() => (window.location = "#projects")}>
+              Check My Work
+            </Button>
 
-          <Button onClick={() => (window.location = "#contact")}>
-            Contact
-          </Button>
-        </div>
-        <div className={styles.myImg}>
-          <img loading="lazy" src="/images/my-photo.jpg" alt="my-photo" />
-        </div>
-      </LeftSection>
-    </Section>
+            <Button onClick={() => (window.location = "#contact")}>
+              Contact
+            </Button>
+          </div>
+        </LeftSection>
+      </Section>
+    </>
   );
 };
 export default Hero;

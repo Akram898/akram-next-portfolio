@@ -77,12 +77,13 @@
   }
   .myImg {
     position: absolute;
-    left: 40vw;
-    top: 8vw;
+    left: 62vw;
+    top: 14vw;
 
     img {
       width: 9vw;
       border-radius: 50%;
+      box-shadow: rgba(180, 21, 219, 0.45) 0px 5px 15px;
     }
   }
 }
