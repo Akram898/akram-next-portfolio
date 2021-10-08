@@ -28,7 +28,7 @@ export const GridContainer = styled.section`
     padding-bottom: 0;
   }
 `;
-export const BlogCard = styled.div`
+export const BlogCard = styled.a`
   border-radius: 10px;
   box-shadow: 3px 3px 20px rgba(80, 78, 78, 0.5);
   text-align: center;
@@ -40,7 +40,13 @@ export const BlogCard = styled.div`
     rgb(27 21 56) 50%,
     rgb(70 58 60) 100%
   );
-
+  color: #fff;
+  transition: 0.3s all;
+  object-fit: contain;
+  overflow: hidden;
+  &:hover {
+    box-shadow: 3px 3px 20px rgba(255, 255, 255, 0.5);
+  }
   @media ${(props) => props.theme.breakpoints.sm} {
     width: 100%;
   }

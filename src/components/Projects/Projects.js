@@ -39,8 +39,13 @@ const Projects = () => (
     <GridContainer className={styles.projSec}>
       {projects.map((p, i) => {
         return (
-          <BlogCard key={i}>
-            <Img src={p.image} />
+          <BlogCard
+            key={i}
+            href={p.visit}
+            target="_blank"
+            className={styles.blogCard}
+          >
+            <Img src={p.image} className={styles.cardImg} />
             <div style={{ height: "20rem" }}>
               <TitleContent>
                 <HeaderThree title>{p.title}</HeaderThree>
