@@ -19,8 +19,8 @@ export const GridContainer = styled.section`
   grid-template-columns: auto auto auto auto;
   padding: 3rem;
   place-items: center;
-  column-gap: 1rem;
-  row-gap: 6rem;
+  column-gap: 3.5rem;
+  row-gap: 3.5rem;
   @media ${(props) => props.theme.breakpoints.sm} {
     display: flex;
     flex-direction: column;
@@ -32,14 +32,15 @@ export const BlogCard = styled.div`
   border-radius: 10px;
   box-shadow: 3px 3px 20px rgba(80, 78, 78, 0.5);
   text-align: center;
-  width: 22vw;
-  height: 500px;
+  width: 100%;
+  height: 31.5em;
   background: linear-gradient(
     229deg,
     rgb(99 99 99) 0%,
     rgb(27 21 56) 50%,
     rgb(70 58 60) 100%
   );
+
   @media ${(props) => props.theme.breakpoints.sm} {
     width: 100%;
   }
