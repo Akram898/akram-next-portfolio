@@ -24,6 +24,9 @@ const Hero = (props) => {
   }, []);
   return (
     <>
+      <div className={styles.myImg2}>
+        <img loading="lazy" src="/images/my-photo.jpg" alt="my-photo" />
+      </div>
       <Section row nopadding className={styles.main}>
         <LeftSection className={styles.leftSec}>
           <div className={styles.title}>
