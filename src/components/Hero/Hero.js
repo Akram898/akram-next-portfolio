@@ -19,7 +19,7 @@ const Hero = (props) => {
     init(textRef.current, {
       showCursor: true,
       backDelay: 1500,
-      strings: ["Web Developer", "Software Enginner", "Programmer"],
+      strings: ["Web Developer", "Software Engineer", "Programmer"],
     });
   }, []);
   return (
