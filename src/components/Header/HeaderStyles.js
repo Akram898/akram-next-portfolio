@@ -9,18 +9,15 @@ export const Container = styled.div`
   // padding: 1rem;
   padding: 1rem 0;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-around;
   margin-bottom: 40px;
   position: fixed;
   width: 100%;
   z-index: 99;
-  background: linear-gradient(
-    270deg,#03191dcf 0%,#b53aafba 100%);
+  background: linear-gradient(270deg, #03191dcf 0%, #b53aafba 100%);
   box-shadow: 0 2px 4px rgb(169 65 171 / 55%);
-}
-
-
 
   @media ${(props) => props.theme.breakpoints.sm} {
     display: flex;
