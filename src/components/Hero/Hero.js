@@ -32,7 +32,7 @@ const Hero = (props) => {
           <div className={styles.title}>
             <SectionTitle>
               Hi There, My name is <br />
-              Akram <br />
+              Ahmed Akram <br />
               I'm A <span ref={textRef}> &nbsp;</span>
             </SectionTitle>
           </div>
