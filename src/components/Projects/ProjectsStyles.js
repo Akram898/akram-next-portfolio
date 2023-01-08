@@ -41,11 +41,12 @@ export const BlogCard = styled.a`
     rgb(70 58 60) 100%
   );
   color: #fff;
-  transition: 0.3s all;
+  transition: 0.3s all ease;
   object-fit: contain;
   overflow: hidden;
   &:hover {
     box-shadow: 3px 3px 20px rgba(255, 255, 255, 0.5);
+    transform: scale(1.05);
   }
   @media ${(props) => props.theme.breakpoints.sm} {
     width: 100%;
