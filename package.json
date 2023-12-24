@@ -9,7 +9,7 @@
   },
   "author": "Ahmed Akram",
   "engines": {
-    "node": ">=20.0.0"
+    "node": "20.10.0"
   },
   "dependencies": {
     "ityped": "^1.0.3",
