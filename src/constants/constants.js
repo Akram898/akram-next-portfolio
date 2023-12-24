@@ -10,6 +10,26 @@ export const projects = [
   //   id: 0,
   // },
   {
+    title: "Next E-commerce",
+    description:
+      "E-Commerce Website with payment functionality.",
+    image: "/images/next-ecommerce.png",
+    tags: ["NextJS", "ReactJS", "Stripe", "Tailwilnd CSS"],
+    source: "https://github.com/Akram898/next-shop",
+    visit: "https://next-shop-wheat.vercel.app/",
+    id: 10,
+  },
+  {
+    title: "Ai Article Summarizer",
+    description:
+      "Sumarizeing your Articles with OpenAI API",
+    image: "/images/ai-article-summarizer.png",
+    tags: ["NextJS", "ReactJS", "Stripe", "Tailwilnd CSS"],
+    source: "https://github.com/Akram898/ai-summarize",
+    visit: "https://ai-article-summarizer-1.netlify.app/",
+    id: 11,
+  },
+  {
     title: "Amazon Clone",
     description:
       "E-Commerce Website with payment functionality and User authentication.",
@@ -58,15 +78,15 @@ export const projects = [
     id: 3,
   },
 
-  {
-    title: "Breaking Bad App",
-    description: "Show the cast of Breaking Bad using API",
-    image: "/images/br.PNG",
-    tags: ["React", "Css", "JS"],
-    source: "https://github.com/Akram898/react-breaking-bad-show",
-    visit: "https://react-breaking-bad-show.netlify.app/",
-    id: 4,
-  },
+  // {
+  //   title: "Breaking Bad App",
+  //   description: "Show the cast of Breaking Bad using API",
+  //   image: "/images/br.PNG",
+  //   tags: ["React", "Css", "JS"],
+  //   source: "https://github.com/Akram898/react-breaking-bad-show",
+  //   visit: "https://react-breaking-bad-show.netlify.app/",
+  //   id: 4,
+  // },
   {
     title: "Relax App",
     description: "Relxation App",
@@ -121,15 +141,15 @@ export const projects = [
     visit: "https://akram898.github.io/New-Site/",
     id: 9,
   },
-  {
-    title: "Task Reminder",
-    description: "Task Reminder App",
-    image: "/images/task-manager.PNG",
-    tags: ["React JS", "CSS", "JavaScript"],
-    source: "https://github.com/Akram898/react-task-tracker",
-    visit: "https://react-task-tracker-2.netlify.app/",
-    id: 10,
-  },
+  // {
+  //   title: "Task Reminder",
+  //   description: "Task Reminder App",
+  //   image: "/images/task-manager.PNG",
+  //   tags: ["React JS", "CSS", "JavaScript"],
+  //   source: "https://github.com/Akram898/react-task-tracker",
+  //   visit: "https://react-task-tracker-2.netlify.app/",
+  //   id: 10,
+  // },
 ];
 
 export const TimeLineData = [
