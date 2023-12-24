@@ -9,26 +9,26 @@ export const projects = [
   //   visit: "https://google.com",
   //   id: 0,
   // },
-  // {
-  //   title: "Next E-commerce",
-  //   description:
-  //     "E-Commerce Website with payment functionality.",
-  //   image: "/images/next-ecommerce.png",
-  //   tags: ["NextJS", "ReactJS", "Stripe", "Tailwilnd CSS"],
-  //   source: "https://github.com/Akram898/next-shop",
-  //   visit: "https://next-shop-wheat.vercel.app/",
-  //   id: 10,
-  // },
-  // {
-  //   title: "Ai Article Summarizer",
-  //   description:
-  //     "Sumarizeing your Articles with OpenAI API",
-  //   image: "/images/ai-article-summarizer.png",
-  //   tags: ["NextJS", "ReactJS", "Stripe", "Tailwilnd CSS"],
-  //   source: "https://github.com/Akram898/ai-summarize",
-  //   visit: "https://ai-article-summarizer-1.netlify.app/",
-  //   id: 11,
-  // },
+  {
+    title: "Next E-commerce",
+    description:
+      "E-Commerce Website with payment functionality.",
+    image: "/images/next-ecommerce.png",
+    tags: ["NextJS", "OpenAI API"],
+    source: "https://github.com/Akram898/next-shop",
+    visit: "https://next-shop-wheat.vercel.app/",
+    id: 10,
+  },
+  {
+    title: "Ai Article Summarizer",
+    description:
+      "Sumarizeing your Articles with OpenAI API",
+    image: "/images/ai-article-summarizer.png",
+    tags: ["NextJS", "ReactJS", "Stripe", "Tailwilnd CSS"],
+    source: "https://github.com/Akram898/ai-summarize",
+    visit: "https://ai-article-summarizer-1.netlify.app/",
+    id: 11,
+  },
   {
     title: "Amazon Clone",
     description:
