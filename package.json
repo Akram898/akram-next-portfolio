@@ -7,6 +7,10 @@
     "build": "next build && next export",
     "start": "next start"
   },
+  "author": "Ahmed Akram",
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "dependencies": {
     "ityped": "^1.0.3",
     "next": "^12.3.4",
