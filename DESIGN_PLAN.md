@@ -47,8 +47,10 @@ and DEC terminals, *not* the banned black + acid-green. Schematic pulses glow na
 | `dim` | `#7C8A8C` | Secondary text, hairlines |
 | `alert` | `#D96C47` | Sparing emphasis (impact numbers, active node) |
 
-Whichever loses becomes the secondary mode via `prefers-color-scheme` — the schematic
-language is designed to survive inversion.
+Night Ops ships as the full dark theme, not just a fallback: a **manual theme toggle**
+(Light / Dark / System) lives in the sheet index, defaulting to System via
+`prefers-color-scheme`, persisted in `localStorage` with a no-flash inline script.
+Both palettes are first-class — every component is designed against both from the start.
 
 ### Typography
 
