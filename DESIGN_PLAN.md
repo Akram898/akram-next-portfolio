@@ -17,7 +17,8 @@ the About section ever says it in words.
 
 ## 2. Design tokens
 
-### Primary mode — two candidates (identity fork, awaiting your pick)
+### Primary mode — **DECIDED: Option A, "Drafting Room" (light primary)**
+*(chosen by Ahmed, 2026-06-12; Option B "Night Ops" becomes the `prefers-color-scheme: dark` mode)*
 
 **Option A — "Drafting Room" (light primary)**
 Warm technical paper, blueprint-blue linework, ink text, one red annotation accent used
