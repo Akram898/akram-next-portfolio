@@ -1,5 +1,19 @@
 # DESIGN_PLAN.md — ahmedakram.com v2
 
+> **REV 2.1 — direction update (2026-06-12, per Ahmed).** Reference set:
+> Mobbin, Tres Mares Capital, ApeChain, sohub.digital, Hashgraph VC.
+> Shared DNA adopted: massive statement typography, near-monochrome palette
+> with a single accent, minimal chrome (hairlines over boxes), full-viewport
+> hero, premium card grids. **Premium Dark is now the default mode**
+> (near-black `#0B0C0E`, off-white `#F2F1ED`, amber accent `#E8A33D`, hot
+> signal `#FF5C38`); Stark Light (pure white, same accents) replaces the warm
+> paper theme behind the toggle. Dropped in this revision: the warm
+> drafting-paper palette, the background grid, and the boxed title blocks —
+> sheet metadata survives as quiet `//0n` hairline markers. The Dispatch,
+> the sheet narrative, all copy, fonts, and accessibility commitments are
+> unchanged. Sections below describe REV 2.0 and remain the record of the
+> original concept.
+
 ## 1. Concept statement
 
 The site is built as an **engineering drawing set for AI systems** — every section is a
