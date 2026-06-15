@@ -5,12 +5,12 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        paper: "var(--paper)",
-        surface: "var(--surface)",
-        ink: "var(--ink)",
-        dim: "var(--dim)",
+        void: "var(--void)",
+        carbon: "var(--carbon)",
+        chalk: "var(--chalk)",
+        fog: "var(--fog)",
         line: "var(--line)",
-        trace: "var(--trace)",
+        pulse: "var(--pulse)",
         signal: "var(--signal)",
       },
       fontFamily: {
@@ -18,11 +18,8 @@ const config: Config = {
         body: ["var(--font-body)"],
         mono: ["var(--font-mono)"],
       },
-      transitionTimingFunction: {
-        sheet: "cubic-bezier(0.22, 1, 0.36, 1)",
-      },
       maxWidth: {
-        sheet: "72rem",
+        frame: "90rem",
       },
     },
   },

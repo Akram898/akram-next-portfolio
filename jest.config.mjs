@@ -6,4 +6,5 @@ export default {
   },
   testMatch: ["**/src/**/*.test.ts"],
   moduleNameMapper: { "^@/(.*)$": "<rootDir>/src/$1" },
+  modulePathIgnorePatterns: ["<rootDir>/legacy-v1/", "<rootDir>/legacy-v2/"],
 };

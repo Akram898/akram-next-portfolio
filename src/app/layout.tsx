@@ -1,18 +1,21 @@
 import type { Metadata } from "next";
-import {
-  Bricolage_Grotesque,
-  Public_Sans,
-  IBM_Plex_Mono,
-} from "next/font/google";
+import { Archivo_Black, IBM_Plex_Mono, Manrope, Unbounded } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
-const display = Bricolage_Grotesque({
+const display = Archivo_Black({
   subsets: ["latin"],
   variable: "--font-display",
-  weight: ["500", "700"],
+  weight: "400",
 });
 
-const body = Public_Sans({
+const accent = Unbounded({
+  subsets: ["latin"],
+  variable: "--font-accent",
+  weight: ["500", "700", "900"],
+});
+
+const body = Manrope({
   subsets: ["latin"],
   variable: "--font-body",
 });
@@ -25,9 +28,9 @@ const mono = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ahmedakram.com"),
-  title: "Ahmed Akram — AI Solutions Engineer & Architect",
+  title: "Ahmed Akram | AI Solutions Engineer & Architect",
   description:
-    "Applied AI, multi-agent systems, and MLOps pipelines — built on enterprise identity and API platforms serving millions of users. Based in Dubai.",
+    "Ahmed Akram designs and ships applied AI systems, multi-agent platforms, MLOps pipelines, and enterprise architecture from Dubai.",
   keywords: [
     "AI Solutions Engineer",
     "AI Architect",
@@ -36,14 +39,13 @@ export const metadata: Metadata = {
     "MCP",
     "LLM Orchestration",
     "Identity Architecture",
-    "OAuth OIDC",
     "Dubai",
   ],
   authors: [{ name: "Ahmed Akram" }],
   openGraph: {
-    title: "Ahmed Akram — AI Solutions Engineer & Architect",
+    title: "Ahmed Akram | AI Solutions Engineer & Architect",
     description:
-      "Applied AI · Multi-Agent Systems · MLOps — on enterprise foundations serving millions of users.",
+      "Applied AI, multi-agent systems, and MLOps built on enterprise engineering.",
     url: "https://ahmedakram.com",
     siteName: "Ahmed Akram",
     locale: "en_US",
@@ -51,16 +53,12 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ahmed Akram — AI Solutions Engineer & Architect",
+    title: "Ahmed Akram | AI Solutions Engineer & Architect",
     description:
-      "Applied AI · Multi-Agent Systems · MLOps — on enterprise foundations serving millions of users.",
+      "Applied AI, multi-agent systems, and MLOps built on enterprise engineering.",
   },
   robots: { index: true, follow: true },
 };
-
-/* Runs before paint: resolves the persisted theme (light/dark/system)
-   so neither mode ever flashes. */
-const themeInit = `(function(){try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark"){document.documentElement.setAttribute("data-theme",t)}}catch(e){}})()`;
 
 export default function RootLayout({
   children,
@@ -68,13 +66,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${display.variable} ${body.variable} ${mono.variable}`}
-      suppressHydrationWarning
+      className={`${display.variable} ${accent.variable} ${body.variable} ${mono.variable}`}
     >
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: themeInit }} />
-      </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }

@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Tokens · REV 2.1 ───────────────────────────────────
+   Premium Dark (default): near-black, off-white type,
+   one amber accent — instrument panel at night.
+   Stark Light (toggle): pure white, near-black, same accent. */
+
+:root,
+[data-theme="dark"] {
+  --paper: #0b0c0e;
+  --surface: #121316;
+  --ink: #f2f1ed;
+  --dim: #8a8d93;
+  --line: rgba(242, 241, 237, 0.1);
+  --trace: #e8a33d;
+  --signal: #ff5c38;
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  --paper: #ffffff;
+  --surface: #f6f6f4;
+  --ink: #111113;
+  --dim: #6e7075;
+  --line: rgba(17, 17, 19, 0.12);
+  --trace: #c97b12;
+  --signal: #d14b26;
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 4rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  /* reveals render their final frame immediately */
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+body {
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--trace);
+  color: var(--paper);
+}
+
+/* visible keyboard focus */
+:focus-visible {
+  outline: 2px solid var(--trace);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* mono micro-labels — section markers, annotations, metadata */
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--dim);
+}

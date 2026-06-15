@@ -4,6 +4,8 @@ export const site = {
   location: "Dubai, UAE",
   timezone: "GST · UTC+4",
   email: "akram78787@gmail.com",
+  phone: "+971 56 179 8031",
+  phoneHref: "tel:+971561798031",
   github: "https://github.com/Akram898",
   linkedin: "https://www.linkedin.com/in/ahmedakram/",
   url: "https://ahmedakram.com",
