@@ -32,3 +32,4 @@ yarn-error.log*
 
 # local screenshots / lighthouse output
 .artifacts/
+.forge/

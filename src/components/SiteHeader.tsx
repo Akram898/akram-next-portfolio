@@ -11,6 +11,7 @@ export default function SiteHeader() {
         <Link href="/">Home</Link>
         <Link href="/architecture">Architecture</Link>
         <Link href="/lab">Lab</Link>
+        <Link href="/guides">Guides</Link>
         <Link href="/#about">About</Link>
         <Link href="/#contact">Contact</Link>
       </nav>

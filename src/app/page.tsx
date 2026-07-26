@@ -56,6 +56,20 @@ export default function Home() {
                 <strong>Enter lab ↗</strong>
               </Link>
             </Reveal>
+            <Reveal delay={0.16}>
+              <Link href="/guides" className="portal-card portal-guides">
+                <span className="portal-code">SYSTEM / 03</span>
+                <div className="portal-visual portal-lines" aria-hidden>
+                  <i /><i /><i /><i /><b />
+                </div>
+                <div>
+                  <h2>Guides</h2>
+                  <h4>& Working Notes</h4>
+                  <p>Model cost, agents, MLOps and AI security — written up with the numbers, the commands, and the sources.</p>
+                </div>
+                <strong>Read guides ↗</strong>
+              </Link>
+            </Reveal>
           </div>
           {/* <Reveal>
             <div className="portal-shipped-heading">
