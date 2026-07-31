@@ -8,7 +8,7 @@ readingMinutes: 6
 tags: ["AI infrastructure", "Nvidia", "OpenAI", "Financing"]
 tone: "analysis"
 video: "2026-07-28-nvidia-openai-backstop"
-status: "published"
+status: live
 ---
 
 ## The one-line version
