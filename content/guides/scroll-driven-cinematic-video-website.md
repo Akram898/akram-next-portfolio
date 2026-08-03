@@ -1,6 +1,6 @@
 ---
 title: "Two prompts, one build: turning ChatGPT video prompts into a scroll-driven site with Claude Code"
-keyword: AI
+keyword: SCROLL
 summary: "A general method for building a cinematic, video-driven website: use ChatGPT to write a continuity-locked prompt sheet for the video model, use ChatGPT again to turn the concept into one structured application brief, then hand that brief to Claude Code to identify the generated footage, optimize it for the web, and wire it to scroll."
 publishedAt: "2026-08-01"
 updatedAt: "2026-08-01"
