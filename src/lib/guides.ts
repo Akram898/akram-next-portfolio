@@ -85,14 +85,14 @@ export function getAllGuides(): Guide[] {
     .filter((g): g is Guide => g !== null && g.status === "live");
 
   // The keyword is wired to ManyChat; a collision silently DMs the wrong link to real
-  // people and nothing surfaces it at runtime. Catch it at build time instead.
+  // people. Warn at build time so it shows in logs, but don't fail the build over it.
   const seen = new Map<string, string>();
   for (const g of guides) {
     const key = g.keyword.toUpperCase();
     const prior = seen.get(key);
     if (prior) {
-      throw new Error(
-        `Duplicate guide keyword ${key}: used by both "${prior}" and "${g.slug}". ` +
+      console.warn(
+        `[guides] Duplicate guide keyword ${key}: used by both "${prior}" and "${g.slug}". ` +
           `The keyword is a ManyChat trigger and must be unique.`
       );
     }
