@@ -10,7 +10,7 @@ tone: "violet"
 video:
   platform: instagram
   url: ""
-status: draft
+status: live
 ---
 
 You commented **AI**, so here is the complete workflow behind that “this entire video was done by AI” claim — what each layer actually does, how the tools fit together, and what still has to be real if you care about trust.

@@ -10,7 +10,7 @@ tone: "red"
 video:
   platform: instagram
   url: ""
-status: draft
+status: live
 ---
 
 A cinematic, video-driven website — a story that plays out as the visitor scrolls, carried by
