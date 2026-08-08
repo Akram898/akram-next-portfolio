@@ -1,9 +1,9 @@
 ---
 title: "Seedance 2.0 — what's real, what's hype, and how to try it free"
-keyword: SEEDANCE
+keyword: SEEDANCE20
 summary: "No, it isn't free and unlimited. Here's the honest version: the real free route without a card, the 12-file multimodal input that no rival matches, the 15-second cap and how chaining gets past it, and where Veo, Sora and Kling still win."
 publishedAt: "2026-08-07"
-updatedAt: "2026-08-07"
+updatedAt: "2026-08-08"
 readingMinutes: 5
 tags: ["ai-video", "seedance", "bytedance", "dreamina", "ai-tools"]
 tone: "blue"
@@ -13,7 +13,7 @@ video:
 status: live
 ---
 
-You commented **SEEDANCE**, so here is the full version: how to try it without paying, what it actually does that the others don't, and the parts the hype posts skip.
+You commented **SEEDANCE20**, so here is the full version: how to try it without paying, what it actually does that the others don't, and the parts the hype posts skip.
 
 Start with the claim doing the rounds.
 
@@ -106,4 +106,4 @@ The mistake that burns a free allowance fastest is generating at max duration wh
 | Best at everything? | No. Veo wins quality, Sora wins physics, Kling wins price. |
 | Where do I start? | [dreamina.capcut.com](https://dreamina.capcut.com/tools/seedance-2-0), short test clips first |
 
-Test it on the free credits before you pay anyone. Comment **SEEDANCE** anytime you want this page again.
+Test it on the free credits before you pay anyone. Comment **SEEDANCE20** anytime you want this page again.
