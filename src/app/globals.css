@@ -109,7 +109,7 @@ button {
   font-weight: 600;
 }
 
-.site-header nav {
+.site-nav-desktop {
   display: flex;
   gap: clamp(22px, 4vw, 52px);
   font-family: var(--font-mono);
@@ -118,12 +118,12 @@ button {
   text-transform: uppercase;
 }
 
-.site-header nav a,
+.site-nav-desktop a,
 .header-contact {
   transition: color 160ms ease;
 }
 
-.site-header nav a:hover,
+.site-nav-desktop a:hover,
 .header-contact:hover {
   color: var(--pulse);
 }
@@ -132,6 +132,121 @@ button {
   justify-self: end;
   font-size: 13px;
   font-weight: 700;
+}
+
+/* ============ Mobile nav toggle + dropdown panel ============ */
+
+.nav-toggle {
+  display: none;
+  width: 42px;
+  height: 42px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  justify-self: end;
+  gap: 5px;
+  border: 1px solid var(--line);
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 18px;
+  height: 1.5px;
+  background: var(--chalk);
+  transition: transform 220ms ease, opacity 150ms ease;
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
+.mobile-nav {
+  display: none;
+  /* Fixed to the viewport, not absolute under the sticky header: an
+     absolutely-positioned child anchored at top:100% of the header plus
+     a 100dvh height always overshoots the screen bottom by the header's
+     own height. Fixed + inset:0 is exactly the viewport, no overshoot
+     possible; --header-h (measured live in SiteHeader.tsx) pads the
+     content down below the header instead. */
+  position: fixed;
+  z-index: 40;
+  inset: 0;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-y: auto;
+  border-top: 1px solid var(--line);
+  background: rgba(9, 11, 11, 0.98);
+  padding: calc(var(--header-h, 71px) + 10px) clamp(18px, 6vw, 48px) max(24px, env(safe-area-inset-bottom));
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 220ms ease, transform 220ms ease;
+  pointer-events: none;
+  backdrop-filter: blur(14px);
+}
+
+.mobile-nav[data-open="true"] {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.mobile-nav nav {
+  display: flex;
+  flex-direction: column;
+  margin-top: 8px;
+}
+
+.mobile-nav nav a {
+  border-bottom: 1px solid var(--line);
+  padding: 13px 2px;
+  font-family: var(--font-display);
+  font-size: clamp(22px, 7vw, 32px);
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 320ms ease, transform 320ms ease, color 160ms ease;
+}
+
+.mobile-nav[data-open="true"] nav a {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mobile-nav nav a:hover,
+.mobile-nav nav a:active {
+  color: var(--pulse);
+}
+
+.mobile-nav-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
+  border: 1px solid var(--line);
+  padding: 16px 20px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: border-color 160ms ease, color 160ms ease;
+}
+
+.mobile-nav-cta:hover {
+  border-color: var(--pulse);
+  color: var(--pulse);
 }
 
 /* ============ Section 01: icon galaxy hero ============ */
@@ -1193,6 +1308,16 @@ button {
   border: 1px solid var(--line);
 }
 
+/* Reveal wraps each grid child in an unstyled div with the default
+   min-width: auto + overflow: visible, so its content's min-content size
+   (e.g. a large uppercase heading) forces the track wider than the
+   container on narrow viewports and blows out horizontal scroll. */
+.portal-grid > *,
+.capability-grid > *,
+.lab-grid > * {
+  min-width: 0;
+}
+
 .portal-card {
   position: relative;
   display: flex;
@@ -1281,6 +1406,7 @@ button {
   letter-spacing: -0.065em;
   line-height: 0.86;
   text-transform: uppercase;
+  overflow-wrap: anywhere;
 }
 
 .portal-card div > p {
@@ -1534,6 +1660,10 @@ button {
   border-top: 1px solid var(--line);
 }
 
+.home-statement > * {
+  min-width: 0;
+}
+
 .home-statement blockquote {
   margin: 28px 0 0;
   font-family: var(--font-display);
@@ -1541,6 +1671,7 @@ button {
   letter-spacing: -0.07em;
   line-height: 0.86;
   text-transform: uppercase;
+  overflow-wrap: anywhere;
 }
 
 .home-statement blockquote span {
@@ -1735,6 +1866,7 @@ button {
 .route-next a {
   display: flex;
   justify-content: space-between;
+  gap: 16px;
   border-top: 2px solid var(--void);
   border-bottom: 2px solid var(--void);
   padding: 24px 0;
@@ -1742,6 +1874,7 @@ button {
   font-size: clamp(38px, 7vw, 108px);
   letter-spacing: -0.06em;
   line-height: 0.9;
+  overflow-wrap: anywhere;
   text-transform: uppercase;
 }
 
@@ -1751,6 +1884,10 @@ button {
   align-items: end;
   gap: 40px;
   margin-bottom: 76px;
+}
+
+.section-heading > * {
+  min-width: 0;
 }
 
 .section-heading h2,
@@ -1763,6 +1900,7 @@ button {
   letter-spacing: -0.065em;
   line-height: 0.9;
   text-transform: uppercase;
+  overflow-wrap: anywhere;
 }
 
 .section-heading > p:last-child {
@@ -2461,6 +2599,7 @@ button {
   letter-spacing: -0.055em;
   line-height: 0.94;
   text-transform: uppercase;
+  overflow-wrap: anywhere;
 }
 
 .capability-grid p {
@@ -2562,6 +2701,12 @@ button {
     radial-gradient(ellipse 60% 80% at 8% 100%, rgba(157, 123, 255, 0.5), transparent 56%),
     var(--pulse);
   color: var(--void);
+}
+
+.contact-heading,
+.contact-direct,
+.contact-meta {
+  min-width: 0;
 }
 
 .contact .eyebrow {
@@ -2859,8 +3004,17 @@ footer {
     grid-template-columns: 1fr auto;
   }
 
-  .site-header nav {
+  .site-nav-desktop,
+  .header-contact {
     display: none;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .mobile-nav {
+    display: flex;
   }
 
   .brand b {
@@ -2875,12 +3029,19 @@ footer {
     --tile-size: calc(clamp(46px, 13vw, 62px) * var(--tile-scale, 1));
   }
 
+  /* Below ~y:60% the floating icons start landing on the name, the CTA
+     pills, and the status bar, so only the tiles that scatter safely
+     above the headline (roughly y < 20%) stay on mobile. */
   .hero-tile:nth-child(3),
   .hero-tile:nth-child(6),
   .hero-tile:nth-child(7),
   .hero-tile:nth-child(8),
   .hero-tile:nth-child(9),
-  .hero-tile:nth-child(12) {
+  .hero-tile:nth-child(10),
+  .hero-tile:nth-child(11),
+  .hero-tile:nth-child(12),
+  .hero-tile:nth-child(13),
+  .hero-tile:nth-child(14) {
     display: none;
   }
 
@@ -2889,18 +3050,20 @@ footer {
   }
 
   .hero-name-lockup {
-    gap: clamp(10px, 3.5vw, 14px);
+    flex-direction: column;
+    gap: 14px;
   }
 
   .hero-name-lockup h1 {
-    font-size: clamp(29px, 9vw, 40px);
+    font-size: clamp(28px, 9.5vw, 40px);
     font-weight: 600;
-    letter-spacing: -0.05em;
+    letter-spacing: -0.04em;
     line-height: 0.94;
+    white-space: nowrap;
   }
 
   .hero-avatar {
-    width: clamp(44px, 13vw, 52px);
+    width: clamp(52px, 16vw, 64px);
   }
 
   .hero-role {
@@ -3087,6 +3250,11 @@ footer {
 
   .portal-card {
     min-height: 510px;
+    min-width: 0;
+  }
+
+  .portal-card h2 {
+    font-size: clamp(30px, 9vw, 42px);
   }
 
   .portal-visual {
@@ -3453,6 +3621,10 @@ footer {
   margin-top: 34px;
 }
 
+.guide-grid > * {
+  min-width: 0;
+}
+
 .guide-card {
   display: flex;
   flex-direction: column;
@@ -3535,4 +3707,8 @@ footer {
   .guide-body { font-size: 16px; }
   .guide-body pre { padding: 16px; border-radius: 10px; }
   .guide-body h2 { margin-top: 48px; }
+
+  .guide-grid {
+    grid-template-columns: 1fr;
+  }
 }
