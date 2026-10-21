@@ -6,14 +6,15 @@ import SiteHeader from "@/components/SiteHeader";
 import { getAllGuides, getGuide, getGuideSlugs } from "@/lib/guides";
 import { site } from "@/lib/site";
 
-type Params = { params: { slug: string } };
+type Params = { params: Promise<{ slug: string }> };
 
 export function generateStaticParams() {
   return getGuideSlugs().map((slug) => ({ slug }));
 }
 
-export function generateMetadata({ params }: Params): Metadata {
-  const guide = getGuide(params.slug);
+export async function generateMetadata({ params }: Params): Promise<Metadata> {
+  const { slug } = await params;
+  const guide = getGuide(slug);
   if (!guide) return { title: "Guide not found | Ahmed Akram" };
 
   const url = `${site.url}/guides/${guide.slug}`;
@@ -39,8 +40,9 @@ export function generateMetadata({ params }: Params): Metadata {
   };
 }
 
-export default function GuidePage({ params }: Params) {
-  const guide = getGuide(params.slug);
+export default async function GuidePage({ params }: Params) {
+  const { slug } = await params;
+  const guide = getGuide(slug);
   if (!guide) notFound();
 
   const others = getAllGuides().filter((g) => g.slug !== guide.slug).slice(0, 2);
@@ -48,7 +50,7 @@ export default function GuidePage({ params }: Params) {
   return (
     <>
       <SiteHeader />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <article>
           <header className="guide-hero">
             <Link className="guide-back" href="/guides">

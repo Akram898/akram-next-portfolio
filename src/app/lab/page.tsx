@@ -5,6 +5,8 @@ import Reveal from "@/components/Reveal";
 import SiteHeader from "@/components/SiteHeader";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/lab" },
+  openGraph: { title: "AI Lab | Ahmed Akram", url: "/lab" },
   title: "AI Lab | Ahmed Akram",
   description:
     "AI agents, MLOps, AI security, system design, and public projects by Ahmed Akram.",
@@ -74,7 +76,7 @@ export default function LabPage() {
   return (
     <>
       <SiteHeader />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <section className="page-hero lab-page-hero">
           <p className="eyebrow">AI Lab / Open, runnable proof</p>
           <h1>Ideas become<br /><span>working systems.</span></h1>

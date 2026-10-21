@@ -18,7 +18,7 @@ import { heroTiles, HeroTile } from "./brandIcons";
 
 const words = [ "Software", "AI agents", "LLM pipelines", "Architecture", "cloud runtimes"];
 
-const stars = Array.from({ length: 90 }, (_, index) => ({
+const stars = Array.from({ length: 36 }, (_, index) => ({
   x: (index * 47 + 13) % 100,
   y: (index * 71 + 19) % 100,
   size: 1 + (index % 3),
@@ -85,7 +85,7 @@ function FloatingTile({
         "--tile-bg": tile.bg,
         "--tile-glow": tile.glow ?? "rgba(0, 0, 0, 0.5)",
       } as React.CSSProperties}
-      initial={{ scale: 0, rotate: index % 2 ? 10 : -10 }}
+      initial={false}
       animate={{ scale: 1, rotate: 0 }}
       transition={{
         type: "spring",
@@ -194,7 +194,7 @@ export default function IconGalaxyHero() {
           ))}
         </div>
 
-        <div className="hero-tile-field" aria-label="Technology stack">
+        <div className="hero-tile-field" aria-hidden>
           {heroTiles.map((tile, index) => (
             <FloatingTile
               key={tile.id}
@@ -217,7 +217,7 @@ export default function IconGalaxyHero() {
         >
           <motion.p
             className="hero-portfolio-label"
-            initial={{ opacity: 0, y: 18 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
@@ -225,7 +225,7 @@ export default function IconGalaxyHero() {
           </motion.p>
           <motion.div
             className="hero-name-lockup"
-            initial={{ opacity: 0, y: 26 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
           >
@@ -242,7 +242,7 @@ export default function IconGalaxyHero() {
           </motion.div>
           <motion.p
             className="hero-role"
-            initial={{ opacity: 0, y: 18 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.32 }}
           >
@@ -250,13 +250,14 @@ export default function IconGalaxyHero() {
           </motion.p>
           <motion.div
             className="hero-specialty"
-            initial={{ opacity: 0, y: 20 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.38 }}
           >
             <span className="hero-lead">I design and ship</span>
-            <span className="hero-word-window">
-              <AnimatePresence mode="wait">
+            <span className="sr-only">software, AI agents, LLM pipelines, architecture, and cloud runtimes.</span>
+            <span className="hero-word-window" aria-hidden>
+              <AnimatePresence mode="wait" initial={false}>
                 <motion.span
                   key={words[wordIndex]}
                   className="hero-word"
@@ -272,24 +273,24 @@ export default function IconGalaxyHero() {
           </motion.div>
           <motion.p
             className="hero-summary"
-            initial={{ opacity: 0, y: 18 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            Shipped with enterprise discipline — orchestration, evaluation,
-            security, and observability designed in from day one.
+            From AI workflows to production platforms, I help teams design,
+            build, and operate software they can rely on.
           </motion.p>
           <motion.div
             className="hero-actions"
-            initial={{ opacity: 0, y: 18 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.52 }}
           >
-            <Link href="/architecture" className="hero-pill hero-pill-solid">
-              Explore architecture <span aria-hidden>↗</span>
+            <Link href="/#contact" className="hero-pill hero-pill-solid">
+              Discuss your project <span aria-hidden>↗</span>
             </Link>
-            <Link href="/lab" className="hero-pill hero-pill-ghost">
-              Enter the lab <span aria-hidden>↗</span>
+            <Link href="/architecture" className="hero-pill hero-pill-ghost">
+              See the work <span aria-hidden>↗</span>
             </Link>
           </motion.div>
         </motion.div>

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Archivo_Black, IBM_Plex_Mono, Manrope, Unbounded } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import { site } from "@/lib/site";
+import portrait from "@/assets/portrait.jpg";
 import "./globals.css";
 
 const display = Archivo_Black({
@@ -12,7 +14,6 @@ const display = Archivo_Black({
 const accent = Unbounded({
   subsets: ["latin"],
   variable: "--font-accent",
-  weight: ["500", "700", "900"],
 });
 
 const body = Manrope({
@@ -23,7 +24,7 @@ const body = Manrope({
 const mono = IBM_Plex_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
-  weight: ["400", "500"],
+  weight: "400",
 });
 
 export const metadata: Metadata = {
@@ -69,8 +70,36 @@ export default function RootLayout({
       className={`${display.variable} ${accent.variable} ${body.variable} ${mono.variable}`}
     >
       <body>
+        <a className="skip-link" href="#main-content">Skip to content</a>
+        <noscript><style>{`.site-nav-desktop { display: flex; flex-wrap: wrap; gap: 14px; } .site-header { display: flex; flex-wrap: wrap; gap: 20px; } .nav-toggle { display: none; } [data-reveal] { opacity: 1 !important; transform: none !important; }`}</style></noscript>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Person",
+                "@id": `${site.url}/#person`,
+                name: site.name,
+                url: site.url,
+                jobTitle: site.role,
+                image: `${site.url}${portrait.src}`,
+                sameAs: [site.github, site.linkedin],
+                homeLocation: { "@type": "Place", name: site.location },
+              },
+              {
+                "@type": "WebSite",
+                "@id": `${site.url}/#website`,
+                url: site.url,
+                name: site.name,
+                inLanguage: "en",
+                author: { "@id": `${site.url}/#person` },
+              },
+            ],
+          }).replace(/</g, "\\u003c") }}
+        />
         {children}
-        <Analytics />
+        {process.env.VERCEL === "1" && <Analytics />}
       </body>
     </html>
   );

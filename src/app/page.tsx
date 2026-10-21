@@ -1,18 +1,20 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
 import ContactSection from "@/components/ContactSection";
 import IconGalaxyHero from "@/components/IconGalaxyHero";
-import ProjectArchive from "@/components/ProjectArchive";
 import Reveal from "@/components/Reveal";
 import SiteHeader from "@/components/SiteHeader";
 import TechMarquee from "@/components/TechMarquee";
 import portrait from "@/assets/portrait.jpg";
 
+export const metadata: Metadata = { alternates: { canonical: "/" } };
+
 export default function Home() {
   return (
     <>
       <SiteHeader />
-      <main id="top">
+      <main id="main-content" tabIndex={-1}>
         <IconGalaxyHero />
 
         <section className="proof" aria-label="Professional summary">
@@ -50,7 +52,7 @@ export default function Home() {
                 </div>
                 <div>
                   <h2>AI Lab</h2>
-                  <h4>& Shipped Work</h4>
+                  <p className="portal-subtitle">&amp; Shipped Work</p>
                   <p>Open proof, experiments, agent systems, MLOps tools, and an archive of shipped work.</p>
                 </div>
                 <strong>Enter lab ↗</strong>
@@ -64,20 +66,13 @@ export default function Home() {
                 </div>
                 <div>
                   <h2>Guides</h2>
-                  <h4>& Working Notes</h4>
+                  <p className="portal-subtitle">&amp; Working Notes</p>
                   <p>Model cost, agents, MLOps and AI security — written up with the numbers, the commands, and the sources.</p>
                 </div>
                 <strong>Read guides ↗</strong>
               </Link>
             </Reveal>
           </div>
-          {/* <Reveal>
-            <div className="portal-shipped-heading">
-              <p className="eyebrow">Shipped work</p>
-              <p>A compact view of the public projects collected in the AI Lab.</p>
-            </div>
-            <ProjectArchive compact />
-          </Reveal> */}
         </section>
 
         <section className="section home-statement">
@@ -133,10 +128,10 @@ export default function Home() {
         <ContactSection />
       </main>
 
-      <footer>
+      <footer className="site-footer">
         <span>© {new Date().getFullYear()} Ahmed Akram</span>
         <span>Designed and engineered in Dubai</span>
-        <a href="#top">Back to top ↑</a>
+        <a href="#main-content">Back to top ↑</a>
       </footer>
     </>
   );

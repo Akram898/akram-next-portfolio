@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const runtime = "edge";
+export const runtime = "nodejs";
 
 export const alt =
   "Ahmed Akram — AI Solutions Engineer & Architect. Applied AI · Multi-Agent Systems · MLOps.";
@@ -90,7 +90,7 @@ export default function OG() {
               letterSpacing: 2,
             }}
           >
-            200 ▸
+            200 OK
           </div>
         </div>
 

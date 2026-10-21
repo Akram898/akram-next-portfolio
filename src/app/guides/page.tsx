@@ -5,6 +5,8 @@ import SiteHeader from "@/components/SiteHeader";
 import { getAllGuides } from "@/lib/guides";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/guides" },
+  openGraph: { title: "Guides | Ahmed Akram", url: "/guides" },
   title: "Guides | Ahmed Akram",
   description:
     "Practical write-ups on AI engineering — model cost, agents, MLOps and AI security. Every number checked against a primary source and linked.",
@@ -23,8 +25,8 @@ export default function GuidesPage() {
   return (
     <>
       <SiteHeader />
-      <main>
-        <section className="page-hero">
+      <main id="main-content" tabIndex={-1}>
+        <section className="page-hero guides-page-hero">
           <p className="eyebrow">Guides / Working notes</p>
           <h1>
             The long version
@@ -38,7 +40,7 @@ export default function GuidesPage() {
           </p>
         </section>
 
-        <section className="section">
+        <section className="section guides-index">
           <Reveal>
             <div className="section-heading split">
               <div>
@@ -47,15 +49,10 @@ export default function GuidesPage() {
                     ? `${guides.length} published`
                     : "Publishing shortly"}
                 </p>
-                <h2>
-                  Read it,
-                  <br />
-                  then go run it.
-                </h2>
+                <h2>Latest guides.</h2>
               </div>
               <p>
-                Short enough to finish, specific enough to act on the same day. No
-                introductions, no throat-clearing.
+                Practical notes, runnable commands, and linked sources.
               </p>
             </div>
           </Reveal>

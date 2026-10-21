@@ -1,42 +1,35 @@
-# ahmedakram.com — v2
+# ahmedakram.com
 
-Personal site of **Ahmed Akram — AI Solutions Engineer & Architect** (Dubai).
+Ahmed Akram's AI engineering portfolio, architecture case studies, project lab, and Markdown guides.
 
-Premium-dark single page built as an "engineering drawing set": six sheets —
-control plane (hero), case files, lab, capabilities, revision history, contact.
-The signature element is **The Dispatch**: a deterministic, scripted SVG trace
-of a request moving through a multi-agent control plane (gateway → OIDC
-identity → planner → research/synthesis/critique agents → eval gate → 200).
+Next.js 16 App Router, React 18, TypeScript, Tailwind CSS 3, and Framer Motion. Requires Node.js 20.9 or newer. The existing React 18 integration still works, but Next.js now marks it deprecated; migrate React and Motion together before moving to Next.js 17.
 
-## Stack
-
-- Next.js 14 (App Router) · TypeScript · Tailwind CSS · Framer Motion
-- Fonts: Bricolage Grotesque / Public Sans / IBM Plex Mono via `next/font`
-- Jest for the dispatch-trace logic (`src/lib/dispatch.ts`)
-- Zero-config deploy on Vercel
-
-## Commands
-
-```bash
-npm run dev      # dev server
-npm run build    # production build
-npm run start    # serve production build
-npm test         # jest (dispatch trace logic)
-npm run assets   # regenerate portrait + apple icon from sources
-node scripts/screenshot.mjs  # screenshots into .artifacts/ (needs `next start -p 3010`)
+```powershell
+npm ci
+npm run dev
+npm run build
+npm run start -- -p 3010
+npm test -- --runInBand
+node scripts/audit-site.mjs
 ```
 
-## Quality floor (verified on the production build)
+The build uses webpack to retain the existing build pipeline. Static portfolio pages, guides, and the OpenGraph image remain eligible for CDN caching. The browser audit uses installed Chrome through Playwright and writes screenshots and its JSON results into the ignored `.artifacts/` directory.
 
-Lighthouse 95 / 100 / 100 / 100 (perf / a11y / best practices / SEO) ·
-responsive 320px → 4K · `prefers-reduced-motion` renders every animation's
-final frame · OpenGraph + Twitter card via the dynamic `/opengraph-image`
-route · sitemap + robots.
+Guides live in `content/guides/`. Draft guides remain previewable by URL with noindex metadata and are omitted from the guide index and sitemap.
 
-## Notes
+The contact section includes a visible inquiry form and direct email/telephone links. To activate delivery, create a Web3Forms access key for the recipient inbox, then set `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` in `.env.local` and the hosting environment. Restart development or rebuild/redeploy after changing it. This is a public form identifier, not an email password or SMTP credential. Until configured, the form displays an email fallback and disables Send.
 
-- Dark ("Night") is the default theme; the toggle persists "Day" in
-  `localStorage` with a no-flash inline script in `layout.tsx`.
-- `legacy-v1/` is the frozen, runnable archive of the previous site — see its
-  README. `DESIGN_PLAN.md` records the design direction (REV 2.0 → 2.1).
-- No secrets are used anywhere in this repo; `.gitignore` blocks `.env*`.
+The visible form submits directly from the browser to Web3Forms, as recommended by its current documentation. The retained `/api/contact` endpoint uses `FORM_ACCESS_KEY` and requires a paid Web3Forms plan plus server IP allowlisting; it is not used by the visible form. Automated tests mock the provider and do not send email. Vercel Analytics is included only when `VERCEL=1`, since its script is served by the Vercel hosting integration.
+
+Read [the October 20 audit](AUDIT-2026-10-20.md) for verified findings, local results, remaining dependency advisories, and deployment checks. Historical design material remains in `DESIGN_PLAN.md`; `legacy-v1/` and `legacy-v2/` are archives.
+
+To regression-test the form without sending email, start a separate dev server with a dummy key and run the mocked browser check from another terminal:
+
+```powershell
+$env:NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY = "local-browser-test-only"
+npm run dev -- -p 3011
+# In another terminal:
+node scripts/audit-contact.mjs
+```
+
+Stop that test server when finished. The dummy key is never a delivery configuration.

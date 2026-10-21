@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 
-/* Scroll reveal: 16px rise + fade, GPU-only properties.
+/* Visible in server HTML, with a 16px rise + fade on entering the viewport.
    prefers-reduced-motion is handled in CSS (globals.css forces
    [data-reveal] to its final frame), which avoids any server/client
    branch and the hydration mismatch that comes with it. */
@@ -19,10 +19,10 @@ export default function Reveal({
     <motion.div
       data-reveal
       className={className}
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={false}
+      whileInView={{ opacity: [0, 1], y: [16, 0] }}
       viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.45, delay, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.45, delay: Math.min(delay, 0.2), ease: [0.22, 1, 0.36, 1] }}
     >
       {children}
     </motion.div>

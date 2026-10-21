@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { createPortal } from "react-dom";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
@@ -16,119 +15,66 @@ const NAV_LINKS = [
 
 export default function SiteHeader() {
   const [open, setOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
-  const headerRef = useRef<HTMLElement>(null);
+  const dialogRef = useRef<HTMLDialogElement>(null);
 
-  // The mobile panel portals into document.body (see below), which needs a real DOM
-  // node that only exists client-side, so it can't render during SSR.
+  useEffect(() => { setOpen(false); }, [pathname]);
+
   useEffect(() => {
-    setMounted(true);
+    const viewport = window.matchMedia("(min-width: 761px)");
+    const closeOnDesktop = () => { if (viewport.matches) setOpen(false); };
+    viewport.addEventListener("change", closeOnDesktop);
+    return () => viewport.removeEventListener("change", closeOnDesktop);
   }, []);
 
-  // Close the menu on route change, so a link tap doesn't leave the panel open behind the next page.
   useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
-
-  // The mobile panel is position:fixed (viewport-relative, so it can never overshoot
-  // the screen the way an absolutely-positioned child of the sticky header would).
-  // It needs the header's real height as padding-top so its content starts below it,
-  // measured live rather than hardcoded since the toggle button changes header height.
-  useEffect(() => {
-    const header = headerRef.current;
-    if (!header) return;
-
-    function setHeaderHeight() {
-      document.documentElement.style.setProperty("--header-h", `${header!.offsetHeight}px`);
-    }
-    setHeaderHeight();
-
-    const observer = new ResizeObserver(setHeaderHeight);
-    observer.observe(header);
-    return () => observer.disconnect();
-  }, []);
-
-  // Lock background scroll while the panel is open, and let Escape close it.
-  useEffect(() => {
-    if (!open) return;
-
+    const dialog = dialogRef.current;
+    if (!dialog) return;
+    if (!open) { dialog.close(); return; }
+    // Native dialog supplies focus containment, Escape, and focus restoration.
+    dialog.showModal();
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-
-    function handleKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") setOpen(false);
-    }
-    window.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      window.removeEventListener("keydown", handleKeyDown);
-    };
+    return () => { document.body.style.overflow = previousOverflow; };
   }, [open]);
 
-  return (
-    <header className="site-header" ref={headerRef}>
-      <Link className="brand" href="/" aria-label="Ahmed Akram, home">
-        <span>AA</span>
-        <b>Ahmed Akram</b>
-      </Link>
+  const isActive = (href: string) => !href.includes("#") &&
+    (href === "/" ? pathname === "/" : pathname.startsWith(href));
 
+  return (
+    <header className="site-header">
+      <Link className="brand" href="/">
+        <span aria-hidden>AA</span><b>Ahmed Akram</b>
+      </Link>
       <nav aria-label="Main navigation" className="site-nav-desktop">
         {NAV_LINKS.map((link) => (
-          <Link key={link.href} href={link.href}>
+          <Link key={link.href} href={link.href} aria-current={isActive(link.href) ? "page" : undefined}>
             {link.label}
           </Link>
         ))}
       </nav>
-
-      <Link className="header-contact" href="/#contact">
-        Let&apos;s talk <span aria-hidden>↓</span>
-      </Link>
-
-      <button
-        type="button"
-        className="nav-toggle"
-        aria-expanded={open}
-        aria-controls="mobile-nav"
-        aria-label={open ? "Close menu" : "Open menu"}
-        onClick={() => setOpen((current) => !current)}
-      >
-        <span />
-        <span />
-        <span />
+      <Link className="header-contact" href="/#contact">Let&apos;s talk <span aria-hidden>&darr;</span></Link>
+      <button type="button" className="nav-toggle" aria-expanded={open} aria-controls="mobile-nav"
+        aria-label="Open menu" onClick={() => setOpen(true)}>
+        <span /><span /><span />
       </button>
-
-      {mounted &&
-        createPortal(
-          <div
-            id="mobile-nav"
-            className="mobile-nav"
-            data-open={open}
-            aria-hidden={!open}
-          >
-            <nav aria-label="Mobile navigation">
-              {NAV_LINKS.map((link, index) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  style={{ transitionDelay: open ? `${60 + index * 45}ms` : "0ms" }}
-                  tabIndex={open ? 0 : -1}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </nav>
-            <Link
-              className="mobile-nav-cta"
-              href="/#contact"
-              tabIndex={open ? 0 : -1}
-            >
-              Let&apos;s talk <span aria-hidden>↓</span>
+      <dialog ref={dialogRef} id="mobile-nav" className="mobile-nav" data-open={open}
+        aria-label="Site navigation" onClose={() => setOpen(false)}>
+        <button type="button" className="mobile-nav-close" onClick={() => setOpen(false)} autoFocus>
+          Close <span aria-hidden>&times;</span>
+        </button>
+        <nav aria-label="Mobile navigation">
+          {NAV_LINKS.map((link) => (
+            <Link key={link.href} href={link.href} onClick={() => setOpen(false)}
+              aria-current={isActive(link.href) ? "page" : undefined}>
+              {link.label}
             </Link>
-          </div>,
-          document.body
-        )}
+          ))}
+        </nav>
+        <Link className="mobile-nav-cta" href="/#contact" onClick={() => setOpen(false)}>
+          Let&apos;s talk <span aria-hidden>&darr;</span>
+        </Link>
+      </dialog>
     </header>
   );
 }

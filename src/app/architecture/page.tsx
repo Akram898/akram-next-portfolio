@@ -11,6 +11,8 @@ import {
 } from "@/components/diagrams";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/architecture" },
+  openGraph: { title: "Architecture | Ahmed Akram", url: "/architecture" },
   title: "Architecture | Ahmed Akram",
   description:
     "Applied AI, MLOps, identity, and API architecture case studies by Ahmed Akram.",
@@ -55,7 +57,7 @@ export default function ArchitecturePage() {
   return (
     <>
       <SiteHeader />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <section className="page-hero architecture-page-hero">
           <p className="eyebrow">Architecture / Operating systems for intelligence</p>
           <h1>Make the<br /><span>whole system</span><br />think.</h1>

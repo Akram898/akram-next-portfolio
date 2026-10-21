@@ -45,6 +45,8 @@ function readDir(): string[] {
 }
 
 function parse(slug: string): Guide | null {
+  // Only exact authored filenames are allowed, including the existing apostrophe.
+  if (!readDir().includes(slug)) return null;
   const file = path.join(GUIDES_DIR, `${slug}.md`);
   if (!fs.existsSync(file)) return null;
 
