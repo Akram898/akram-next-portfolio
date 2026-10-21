@@ -17,7 +17,7 @@ The build uses webpack to retain the existing build pipeline. Static portfolio p
 
 Guides live in `content/guides/`. Draft guides remain previewable by URL with noindex metadata and are omitted from the guide index and sitemap.
 
-The contact section includes a visible inquiry form and direct email/telephone links. To activate delivery, create a Web3Forms access key for the recipient inbox, then set `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` in `.env.local` and the hosting environment. Restart development or rebuild/redeploy after changing it. This is a public form identifier, not an email password or SMTP credential. Until configured, the form displays an email fallback and disables Send.
+The contact section includes a visible inquiry form and direct email/telephone links. To activate delivery, create a Web3Forms access key for the recipient inbox, then set `WEB3FORMS_ACCESS_KEY` in `.env.local` and the hosting environment. Restart development or rebuild/redeploy after changing it. This is a public form identifier, not an email password or SMTP credential. Until configured, the form displays an email fallback and disables Send.
 
 The visible form submits directly from the browser to Web3Forms, as recommended by its current documentation. The retained `/api/contact` endpoint uses `FORM_ACCESS_KEY` and requires a paid Web3Forms plan plus server IP allowlisting; it is not used by the visible form. Automated tests mock the provider and do not send email. Vercel Analytics is included only when `VERCEL=1`, since its script is served by the Vercel hosting integration.
 
@@ -26,7 +26,7 @@ Read [the October 20 audit](AUDIT-2026-10-20.md) for verified findings, local re
 To regression-test the form without sending email, start a separate dev server with a dummy key and run the mocked browser check from another terminal:
 
 ```powershell
-$env:NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY = "local-browser-test-only"
+$env:WEB3FORMS_ACCESS_KEY = "local-browser-test-only"
 npm run dev -- -p 3011
 # In another terminal:
 node scripts/audit-contact.mjs
