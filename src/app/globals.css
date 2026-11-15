@@ -3544,6 +3544,8 @@ button {
 .guide-body ul,
 .guide-body ol { margin: 0 0 22px; padding-left: 22px; }
 .guide-body li { margin-bottom: 9px; }
+.guide-body ol { list-style: decimal; }
+.guide-body ul { list-style: disc; }
 .guide-body li::marker { color: var(--pulse); }
 
 .guide-body blockquote {
@@ -3621,6 +3623,21 @@ button {
 }
 
 .guide-body img { max-width: 100%; height: auto; border-radius: 10px; }
+
+/* Arabic halves of bilingual guides: <div dir="rtl" lang="ar"> in the markdown. */
+.guide-body [dir="rtl"] { font-family: var(--font-arabic), "Segoe UI", Tahoma, sans-serif; line-height: 1.95; }
+.guide-body [dir="rtl"] h2,
+.guide-body [dir="rtl"] h3 { font-family: var(--font-arabic), sans-serif; font-weight: 800; letter-spacing: 0; line-height: 1.5; }
+.guide-body [dir="rtl"] ul,
+.guide-body [dir="rtl"] ol { padding-left: 0; padding-right: 22px; }
+.guide-body [dir="rtl"] blockquote { border-left: 0; border-right: 3px solid var(--pulse); }
+.guide-body [dir="rtl"] th,
+.guide-body [dir="rtl"] td { text-align: right; }
+.guide-body [dir="rtl"] th { font-family: var(--font-arabic), sans-serif; font-size: 13px; letter-spacing: 0; text-transform: none; }
+.guide-body [dir="rtl"] code,
+.guide-body [dir="rtl"] pre { direction: ltr; unicode-bidi: isolate; text-align: left; }
+.guide-body .lang-switch { display: flex; gap: 10px; flex-wrap: wrap; margin: 0 0 28px; }
+.guide-body .lang-switch a { padding: 6px 16px; border: 1px solid var(--line); border-radius: 999px; text-decoration: none; font-weight: 700; }
 
 /* ---------------------------------------------------------------- index cards */
 

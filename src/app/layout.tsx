@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Archivo_Black, IBM_Plex_Mono, Manrope, Unbounded } from "next/font/google";
+import { Archivo_Black, Cairo, IBM_Plex_Mono, Manrope, Unbounded } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { site } from "@/lib/site";
 import portrait from "@/assets/portrait.jpg";
@@ -19,6 +19,14 @@ const accent = Unbounded({
 const body = Manrope({
   subsets: ["latin"],
   variable: "--font-body",
+});
+
+// Arabic sections of bilingual guides (wrapped in dir="rtl" lang="ar"); no other page uses it.
+const arabic = Cairo({
+  subsets: ["arabic"],
+  variable: "--font-arabic",
+  weight: ["400", "700", "800"],
+  display: "swap",
 });
 
 const mono = IBM_Plex_Mono({
@@ -67,7 +75,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${display.variable} ${accent.variable} ${body.variable} ${mono.variable}`}
+      className={`${display.variable} ${accent.variable} ${body.variable} ${mono.variable} ${arabic.variable}`}
     >
       <body>
         <a className="skip-link" href="#main-content">Skip to content</a>
