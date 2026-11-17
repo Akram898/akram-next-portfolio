@@ -2,6 +2,10 @@
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  // The comment-to-DM webhook reads guide keywords from disk at request time.
+  outputFileTracingIncludes: {
+    "/api/meta-webhook": ["./content/guides/**/*.md"],
+  },
   images: {
     formats: ["image/webp"],
   },
