@@ -60,6 +60,11 @@ from Egypt, **Egypt (+20)** was already selected.
 - **Not in the list when I checked:** Jordan, Iraq, Algeria, Tunisia, Libya, Sudan, Syria,
   Yemen, Palestine.
 
+**Heads-up for Egypt:** when I tried it myself on 23 November 2026 with an Egyptian number, the
+sign-in code never arrived by SMS. If that happens to you too, wait a few minutes, check that
+the number is typed with +20 and without the leading 0, and try once more. Don't hand your
+number to anyone who offers to "get the code for you".
+
 Being in the list means the form takes your number. It does not promise that you get in, or
 that every task works where you live. The examples Instinct shows (groceries, trains,
 flowers) depend on local shops and services, and I have not tested it in Egypt.
@@ -141,6 +146,10 @@ third-party guides, not from Instinct.*
   المغرب، لبنان.
 - **مش موجودة وقت ما راجعت:** الأردن، العراق، الجزائر، تونس، ليبيا، السودان، سوريا،
   اليمن، فلسطين.
+
+**تنبيه لمصر:** لما جرّبت بنفسي يوم 23 نوفمبر 2026 برقم مصري، كود التسجيل ما وصلنيش في رسالة.
+لو حصل معاك نفس الكلام، استنى كام دقيقة، واتأكد إنك كاتب الرقم بـ ‎+20 ومن غير الصفر اللي في
+الأول، وجرّب مرة كمان. وما تدّيش رقمك لأي حد يقولك "هجيبلك الكود".
 
 وجود بلدك في القايمة معناه إن الصفحة بتقبل رقمك بس. مش معناه إنك هتدخل أكيد، ولا إن كل
 المهام هتشتغل عندك. الأمثلة اللي Instinct بيعرضها (بقالة، قطر، ورد) معتمدة على محلات
