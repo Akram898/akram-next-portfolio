@@ -24,6 +24,9 @@ const SITE = "https://ahmedakram.com";
 export const ACCOUNT_LANG: Record<string, Lang> = {
   "thearabicakram.ai": "ar",
   "theakram.ai": "en",
+  // Facebook Pages, by Page name in lower case.
+  "the akram ai بالعربي": "ar",
+  "the akram ai": "en",
 };
 
 /** Upper-cased words of a comment, with punctuation and emoji removed. */
