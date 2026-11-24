@@ -2,9 +2,16 @@
 
 import { useState, type FormEvent } from "react";
 import { site } from "@/lib/site";
+import type { PortfolioCopy } from "@/lib/portfolio-content";
 
-export default function ContactForm() {
-  const accessKey = process.env.WEB3FORMS_ACCESS_KEY;
+export default function ContactForm({
+  t,
+  accessKey,
+}: {
+  t: PortfolioCopy["contact"]["form"];
+  /** Web3Forms key, passed down from the server component. */
+  accessKey?: string;
+}) {
   const [pending, setPending] = useState(false);
   const [status, setStatus] = useState<{
     success: boolean;
@@ -19,8 +26,7 @@ export default function ContactForm() {
     if (!accessKey) {
       setStatus({
         success: false,
-        message:
-          "The form is unavailable at the moment. Please email me directly.",
+        message: `${t.unavailable} ${t.unavailableLink}.`,
       });
       return;
     }
@@ -39,21 +45,19 @@ export default function ContactForm() {
       if (!response.ok || data.success !== true) {
         setStatus({
           success: false,
-          message:
-            "Unable to send your message. Please try again or email me directly.",
+          message: t.failed,
         });
         return;
       }
       form.reset();
       setStatus({
         success: true,
-        message: "Your message has been sent. Thank you for getting in touch.",
+        message: t.sent,
       });
     } catch {
       setStatus({
         success: false,
-        message:
-          "Unable to send your message right now. Please try again or email me directly.",
+        message: t.offline,
       });
     } finally {
       setPending(false);
@@ -62,27 +66,25 @@ export default function ContactForm() {
 
   return (
     <div className="contact-form-panel">
-      <h3>Tell me about your project</h3>
+      <h3>{t.title}</h3>
       <p className="contact-form-note">
-        Share a little context and I&apos;ll reply by email. Prefer to write
-        directly? <a href={`mailto:${site.email}`}>Email me</a>.
+        {t.note} <a href={`mailto:${site.email}`}>{t.noteLink}</a>.
       </p>
       <noscript>
         <p>
-          Please <a href={`mailto:${site.email}`}>email me directly</a> to
-          discuss your project.
+          <a href={`mailto:${site.email}`}>{t.noscript}</a>
         </p>
         <style>{`.contact-form-panel form { display: none; }`}</style>
       </noscript>
       {!accessKey && (
         <p className="contact-form-unavailable">
-          The form is unavailable at the moment. Please{" "}
-          <a href={`mailto:${site.email}`}>email me directly</a>.
+          {t.unavailable}{" "}
+          <a href={`mailto:${site.email}`}>{t.unavailableLink}</a>.
         </p>
       )}
-      <form onSubmit={submit} aria-label="Project inquiry" aria-busy={pending}>
+      <form onSubmit={submit} aria-label={t.aria} aria-busy={pending}>
         <label htmlFor="contact-name">
-          Your name
+          {t.name}
           <input
             id="contact-name"
             name="name"
@@ -93,7 +95,7 @@ export default function ContactForm() {
           />
         </label>
         <label htmlFor="contact-email">
-          Email address
+          {t.email}
           <input
             id="contact-email"
             name="email"
@@ -105,7 +107,7 @@ export default function ContactForm() {
           />
         </label>
         <label className="contact-message" htmlFor="contact-message">
-          Your project
+          {t.project}
           <textarea
             id="contact-message"
             name="message"
@@ -114,7 +116,7 @@ export default function ContactForm() {
             minLength={10}
             maxLength={5000}
             disabled={pending}
-            placeholder="What are you building, and where do you need help?"
+            placeholder={t.placeholder}
           />
         </label>
         <div className="contact-botcheck" aria-hidden>
@@ -127,7 +129,7 @@ export default function ContactForm() {
           />
         </div>
         <button type="submit" disabled={pending || !accessKey}>
-          {pending ? "Sending…" : "Send message"}
+          {pending ? t.sending : t.send}
           <span aria-hidden>↗</span>
         </button>
         <p

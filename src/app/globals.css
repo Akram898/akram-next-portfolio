@@ -3802,3 +3802,268 @@ button {
   .hero-scroll-cue { display: none; }
   .guide-card-head, .guide-card-foot { flex-wrap: wrap; }
 }
+
+/* ============ Header: language switch ============ */
+
+.header-end {
+  display: flex;
+  align-items: center;
+  justify-self: end;
+  gap: 18px;
+}
+
+.header-lang,
+.mobile-nav-lang {
+  font-family: var(--font-biz-body), var(--font-arabic), sans-serif;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  transition: border-color 160ms ease, color 160ms ease;
+}
+
+.header-lang:hover,
+.mobile-nav-lang:hover {
+  border-color: var(--pulse);
+  color: var(--pulse);
+}
+
+.mobile-nav-lang {
+  align-self: flex-start;
+  margin-top: 16px;
+  padding: 10px 18px;
+}
+
+@media (max-width: 760px) {
+  .site-header {
+    grid-template-columns: 1fr auto auto;
+    gap: 12px;
+  }
+}
+
+/* ============ Social links: hero orbit + contact cards ============ */
+
+.social-orbit {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin: 26px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.social-orbit a {
+  position: relative;
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  border: 1px solid rgba(240, 238, 231, 0.18);
+  border-radius: 50%;
+  background: rgba(9, 11, 11, 0.45);
+  backdrop-filter: blur(10px);
+  color: var(--chalk);
+  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1), background-color 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+}
+
+.social-orbit a:hover,
+.social-orbit a:focus-visible {
+  transform: translateY(-4px) scale(1.06);
+  border-color: transparent;
+  background: var(--brand);
+  box-shadow: 0 12px 30px -6px var(--brand);
+  color: #fff;
+}
+
+.social-orbit-icon {
+  width: 19px;
+  height: 19px;
+}
+
+.social-cards {
+  grid-column: 1 / -1;
+}
+
+.social-cards > p {
+  margin: 0 0 14px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.social-cards ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.social-cards a {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  height: 100%;
+  border-radius: 18px;
+  background: rgba(9, 11, 11, 0.9);
+  padding: 14px 16px;
+  color: var(--chalk);
+  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 220ms ease;
+}
+
+.social-cards a:hover,
+.social-cards a:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 34px -14px rgba(9, 11, 11, 0.8), inset 0 0 0 1px var(--brand);
+}
+
+.social-card-icon {
+  display: grid;
+  flex: none;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border-radius: 12px;
+  background: var(--brand);
+  color: #fff;
+}
+
+.social-card-icon svg {
+  width: 21px;
+  height: 21px;
+}
+
+.social-card-text {
+  display: grid;
+  min-width: 0;
+  gap: 2px;
+}
+
+.social-card-text b {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.social-card-text small {
+  overflow: hidden;
+  color: var(--fog);
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.social-card-arrow {
+  margin-inline-start: auto;
+  color: var(--fog);
+  transition: color 160ms ease, transform 160ms ease;
+}
+
+.social-cards a:hover .social-card-arrow {
+  color: var(--chalk);
+  transform: translate(2px, -2px);
+}
+
+/* Email, WhatsApp and mobile side by side */
+.contact-direct {
+  grid-template-columns: minmax(120px, 0.3fr) repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: 760px) {
+  .contact-direct {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-direct a {
+    border-left: 0;
+    border-top: 1px solid rgba(9, 11, 11, 0.28);
+    padding-inline: 0;
+  }
+}
+
+/* ============ Arabic portfolio (/ar/portfolio) ============
+   The portfolio's display and mono faces have no Arabic glyphs, so the Arabic page
+   uses the same Alexandria + Readex Pro pair as the home and services pages.
+   Uppercase and wide tracking are Latin habits; Arabic gets neither. */
+
+/* !important is scoped to this page: the portfolio's own rules set mono fonts and
+   tracking on many specific selectors, and every one of them must yield here. */
+.pf-ar,
+.pf-ar :is(p, span, a, li, label, input, textarea, button, small, b, strong) {
+  font-family: var(--font-biz-body), var(--font-arabic), sans-serif !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+
+.pf-ar :is(h1, h2, h3, .hero-word, .proof strong, blockquote, blockquote span, .brand b, .portal-card h2) {
+  font-family: var(--font-biz-display), var(--font-arabic), sans-serif !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+
+.pf-ar .brand span,
+.pf-ar .portal-code {
+  font-family: var(--font-mono) !important;
+}
+
+.pf-ar :where(.eyebrow, .hero-portfolio-label, .hero-role, .portal-code, .contact-direct > p, .contact-direct a span, .social-cards > p, .site-nav-desktop, .hero-status, .marquee-item) {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.pf-ar .eyebrow,
+.pf-ar .hero-portfolio-label,
+.pf-ar .contact-direct > p,
+.pf-ar .contact-direct a span,
+.pf-ar .social-cards > p,
+.pf-ar .hero-status {
+  font-size: 13px;
+}
+
+.pf-ar .site-nav-desktop {
+  font-size: 14px;
+}
+
+.pf-ar .hero-role {
+  font-size: 13px;
+}
+
+.pf-ar h1,
+.pf-ar h2,
+.pf-ar blockquote {
+  line-height: 1.3;
+}
+
+.pf-ar .contact h2 {
+  line-height: 1.15;
+}
+
+.pf-ar .contact-direct a {
+  border-left: 0;
+  border-right: 1px solid rgba(9, 11, 11, 0.28);
+}
+
+.pf-ar .contact-direct > p {
+  padding: 20px 0 20px 24px;
+}
+
+.pf-ar .social-card-arrow,
+.pf-ar .hero-pill span {
+  transform: scaleX(-1);
+}
+
+/* Brand-tile field and the marquee are pictures, not text: keep them left-to-right. */
+.pf-ar .hero-tile-field,
+.pf-ar .tech-marquee,
+.pf-ar .star-field {
+  direction: ltr;
+}
+
+/* Arabic words run wider than the Latin display face; keep each card title on one line. */
+.pf-ar .portal-card h2 {
+  font-size: clamp(34px, 3.6vw, 56px);
+  line-height: 1.25;
+}

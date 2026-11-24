@@ -15,8 +15,8 @@ import {
 import { useEffect, useRef, useState } from "react";
 import portrait from "@/assets/portrait.jpg";
 import { heroTiles, HeroTile } from "./brandIcons";
-
-const words = [ "Software", "AI agents", "LLM pipelines", "Architecture", "cloud runtimes"];
+import type { PortfolioCopy } from "@/lib/portfolio-content";
+import { SocialOrbit } from "./SocialLinks";
 
 const stars = Array.from({ length: 36 }, (_, index) => ({
   x: (index * 47 + 13) % 100,
@@ -113,7 +113,8 @@ function FloatingTile({
   );
 }
 
-export default function IconGalaxyHero() {
+export default function IconGalaxyHero({ t }: { t: PortfolioCopy }) {
+  const words = t.hero.words;
   const [wordIndex, setWordIndex] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
   const reduceMotion = useReducedMotion();
@@ -144,7 +145,7 @@ export default function IconGalaxyHero() {
       setWordIndex((current) => (current + 1) % words.length);
     }, 2400);
     return () => window.clearInterval(timer);
-  }, [reduceMotion]);
+  }, [reduceMotion, words.length]);
 
   function handlePointerMove(event: React.PointerEvent<HTMLElement>) {
     const rect = event.currentTarget.getBoundingClientRect();
@@ -221,7 +222,7 @@ export default function IconGalaxyHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            Selected work / systems portfolio
+            {t.hero.label}
           </motion.p>
           <motion.div
             className="hero-name-lockup"
@@ -238,7 +239,7 @@ export default function IconGalaxyHero() {
                 priority
               />
             </span>
-            <h1>Ahmed Akram</h1>
+            <h1>{t.hero.name}</h1>
           </motion.div>
           <motion.p
             className="hero-role"
@@ -246,7 +247,7 @@ export default function IconGalaxyHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.32 }}
           >
-            AI Solutions Engineer <span /> Architect <span /> Dubai, UAE
+            {t.hero.role[0]} <span /> {t.hero.role[1]} <span /> {t.hero.role[2]}
           </motion.p>
           <motion.div
             className="hero-specialty"
@@ -254,8 +255,8 @@ export default function IconGalaxyHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.38 }}
           >
-            <span className="hero-lead">I design and ship</span>
-            <span className="sr-only">software, AI agents, LLM pipelines, architecture, and cloud runtimes.</span>
+            <span className="hero-lead">{t.hero.lead}</span>
+            <span className="sr-only">{t.hero.srWords}</span>
             <span className="hero-word-window" aria-hidden>
               <AnimatePresence mode="wait" initial={false}>
                 <motion.span
@@ -277,8 +278,7 @@ export default function IconGalaxyHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            From AI workflows to production platforms, I help teams design,
-            build, and operate software they can rely on.
+            {t.hero.summary}
           </motion.p>
           <motion.div
             className="hero-actions"
@@ -286,18 +286,25 @@ export default function IconGalaxyHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.52 }}
           >
-            <Link href="/#contact" className="hero-pill hero-pill-solid">
-              Discuss your project <span aria-hidden>↗</span>
+            <Link href="#contact" className="hero-pill hero-pill-solid">
+              {t.hero.primary} <span aria-hidden>↗</span>
             </Link>
             <Link href="/architecture" className="hero-pill hero-pill-ghost">
-              See the work <span aria-hidden>↗</span>
+              {t.hero.secondary} <span aria-hidden>↗</span>
             </Link>
+          </motion.div>
+          <motion.div
+            initial={false}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.62 }}
+          >
+            <SocialOrbit locale={t.locale} whatsappText={t.contact.whatsappText} label={t.hero.socialsLabel} />
           </motion.div>
         </motion.div>
 
         <div className="hero-status">
-          <span><i /> Available for selected systems</span>
-          <span className="hero-scroll-cue">Scroll to enter orbit ↓</span>
+          <span><i /> {t.hero.status}</span>
+          <span className="hero-scroll-cue">{t.hero.scroll}</span>
         </div>
       </section>
     </>

@@ -1,112 +1,42 @@
+import { readFile } from "node:fs/promises";
+import path from "node:path";
 import { ImageResponse } from "next/og";
 
 export const runtime = "nodejs";
 
-export const alt =
-  "Ahmed Akram — AI Solutions Engineer & Architect. Applied AI · Multi-Agent Systems · MLOps.";
+export const alt = "Ahmed Akram: portfolio and services. Websites, ads, AI and automation for businesses.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-const node = (label: string, accent = false) => (
-  <div
-    style={{
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      border: accent ? "3px solid #e8a33d" : "2px solid rgba(242,241,237,0.18)",
-      borderRadius: 10,
-      color: accent ? "#f2f1ed" : "#8a8d93",
-      fontSize: 20,
-      padding: "10px 18px",
-      background: "#121316",
-      letterSpacing: 2,
-    }}
-  >
-    {label}
-  </div>
-);
+/* The card shown when the link is shared on WhatsApp, LinkedIn or Facebook.
+   It mirrors the home page: two halves, the person in the seam. */
+export default async function OG() {
+  const [street, face] = await Promise.all([
+    readFile(path.join(process.cwd(), "public/media/hero-night-street.jpg")),
+    readFile(path.join(process.cwd(), "src/assets/portrait.jpg")),
+  ]);
+  const bg = `data:image/jpeg;base64,${street.toString("base64")}`;
+  const portrait = `data:image/jpeg;base64,${face.toString("base64")}`;
 
-const wire = (
-  <div style={{ display: "flex", width: 36, height: 2, background: "#e8a33d", opacity: 0.55 }} />
-);
-
-export default function OG() {
   return new ImageResponse(
     (
-      <div
-        style={{
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-between",
-          background: "#0b0c0e",
-          padding: 64,
-          fontFamily: "sans-serif",
-        }}
-      >
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <div style={{ display: "flex", color: "#e8a33d", fontSize: 24, letterSpacing: 4 }}>
-            AHMED AKRAM · DUBAI
-          </div>
-          <div
-            style={{
-              display: "flex",
-              color: "#f2f1ed",
-              fontSize: 80,
-              fontWeight: 700,
-              marginTop: 16,
-              letterSpacing: -2,
-            }}
-          >
-            Applied AI, drawn to spec.
-          </div>
-          <div style={{ display: "flex", color: "#8a8d93", fontSize: 30, marginTop: 12 }}>
-            AI Solutions Engineer & Architect — Multi-Agent Systems · MLOps
-          </div>
+      <div style={{ width: "100%", height: "100%", display: "flex", position: "relative", background: "#070a12" }}>
+        <div style={{ width: 600, height: 630, display: "flex", flexDirection: "column", justifyContent: "flex-end", padding: 56, background: "linear-gradient(160deg, #101a3a 0%, #070a12 75%)" }}>
+          <div style={{ display: "flex", color: "#f3f1ec", fontSize: 92, fontWeight: 800, letterSpacing: -4 }}>Portfolio</div>
+          <div style={{ display: "flex", color: "#9fb1ff", fontSize: 28, marginTop: 8 }}>AI systems and shipped work</div>
         </div>
-
-        <div style={{ display: "flex", alignItems: "center" }}>
-          {node("GATEWAY")}
-          {wire}
-          {node("IDENTITY")}
-          {wire}
-          {node("PLANNER", true)}
-          {wire}
-          {node("AGENTS ×3")}
-          {wire}
-          {node("EVAL GATE")}
-          {wire}
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              background: "#ff5c38",
-              color: "#0b0c0e",
-              fontSize: 20,
-              borderRadius: 10,
-              padding: "12px 18px",
-              letterSpacing: 2,
-            }}
-          >
-            200 OK
-          </div>
+        <div style={{ width: 600, height: 630, display: "flex", position: "relative", flexDirection: "column", justifyContent: "flex-end", alignItems: "flex-end", padding: 56, background: "#140d07" }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={bg} alt="" width={600} height={630} style={{ position: "absolute", top: 0, left: 0, width: 600, height: 630, objectFit: "cover", opacity: 0.45 }} />
+          <div style={{ position: "absolute", top: 0, left: 0, width: 600, height: 630, display: "flex", background: "linear-gradient(0deg, rgba(20,13,7,0.95) 10%, rgba(20,13,7,0.2) 80%)" }} />
+          <div style={{ display: "flex", position: "relative", color: "#f3f1ec", fontSize: 92, fontWeight: 800, letterSpacing: -4 }}>Services</div>
+          <div style={{ display: "flex", position: "relative", color: "#ffc46b", fontSize: 28, marginTop: 8 }}>Websites, ads, AI, automation</div>
         </div>
-
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            borderTop: "2px solid rgba(242,241,237,0.18)",
-            paddingTop: 20,
-            color: "#8a8d93",
-            fontSize: 22,
-            letterSpacing: 3,
-          }}
-        >
-          <div style={{ display: "flex" }}>AHMEDAKRAM.COM</div>
-          <div style={{ display: "flex" }}>//01 · CONTROL PLANE</div>
+        <div style={{ position: "absolute", left: 600, top: 0, width: 1, height: 630, display: "flex", background: "rgba(255,255,255,0.35)" }} />
+        <div style={{ position: "absolute", left: 480, top: 70, width: 240, display: "flex", flexDirection: "column", alignItems: "center" }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={portrait} alt="" width={150} height={150} style={{ width: 150, height: 150, borderRadius: 999, objectFit: "cover", border: "4px solid #f3f1ec" }} />
+          <div style={{ display: "flex", marginTop: 16, color: "#f3f1ec", fontSize: 30, fontWeight: 700, background: "rgba(7,10,18,0.8)", padding: "6px 18px", borderRadius: 999 }}>Ahmed Akram</div>
         </div>
       </div>
     ),
