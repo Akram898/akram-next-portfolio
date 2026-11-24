@@ -24,7 +24,10 @@ const VERSION = process.env.META_GRAPH_VERSION || "v23.0";
 const IG = `https://graph.instagram.com/${VERSION}`;
 const FB = `https://graph.facebook.com/${VERSION}`;
 
-type Account = { token: string; lang: Lang; ids: string[]; name: string };
+/** via "instagram": an Instagram Login token (graph.instagram.com).
+ *  via "page": a Facebook Page token, which also serves the Instagram account linked to
+ *  that Page through graph.facebook.com; pageId is that Page. */
+type Account = { token: string; lang: Lang; ids: string[]; name: string; via: "instagram" | "page"; pageId?: string };
 
 let accountsPromise: Promise<Map<string, Account>> | null = null;
 let guidesCache: KeywordGuide[] | null = null;
@@ -48,26 +51,36 @@ function loadAccounts(): Promise<Map<string, Account>> {
     const map = new Map<string, Account>();
     const add = (a: Account) => a.ids.filter(Boolean).forEach((id) => map.set(id, a));
 
-    await Promise.all([
-      ...tokensWithPrefix("IG_TOKEN_").map(async (token) => {
+    // Instagram Login tokens first, so they take priority over a Page's linked Instagram account.
+    await Promise.all(
+      tokensWithPrefix("IG_TOKEN_").map(async (token) => {
         try {
           const me = await graphGet(`${IG}/me?fields=user_id,username`, token);
           const name = String(me.username ?? "");
-          add({ token, name, lang: ACCOUNT_LANG[name.toLowerCase()] ?? "en", ids: [String(me.user_id ?? ""), String(me.id ?? "")] });
+          add({ token, name, via: "instagram", lang: ACCOUNT_LANG[name.toLowerCase()] ?? "en", ids: [String(me.user_id ?? ""), String(me.id ?? "")] });
         } catch (e) {
           console.error("[meta-webhook] an IG_TOKEN_ value failed /me:", (e as Error).message);
         }
       }),
-      ...tokensWithPrefix("FB_PAGE_TOKEN_").map(async (token) => {
+    );
+    await Promise.all(
+      tokensWithPrefix("FB_PAGE_TOKEN_").map(async (token) => {
         try {
-          const me = await graphGet(`${FB}/me?fields=id,name`, token);
+          const me = await graphGet(`${FB}/me?fields=id,name,instagram_business_account{id,username}`, token);
           const name = String(me.name ?? "");
-          add({ token, name, lang: ACCOUNT_LANG[name.toLowerCase()] ?? "en", ids: [String(me.id ?? "")] });
+          const pageId = String(me.id ?? "");
+          add({ token, name, via: "page", pageId, lang: ACCOUNT_LANG[name.toLowerCase()] ?? "en", ids: [pageId] });
+          // The Instagram account linked to this Page, unless an IG_TOKEN_ already covers it.
+          const ig = me.instagram_business_account;
+          if (ig?.id && !map.has(String(ig.id))) {
+            const igName = String(ig.username ?? "");
+            add({ token, name: igName, via: "page", pageId, lang: ACCOUNT_LANG[igName.toLowerCase()] ?? "en", ids: [String(ig.id)] });
+          }
         } catch (e) {
           console.error("[meta-webhook] an FB_PAGE_TOKEN_ value failed /me:", (e as Error).message);
         }
       }),
-    ]);
+    );
     if (map.size === 0) accountsPromise = null; // retry on the next event
     return map;
   })();
@@ -106,10 +119,15 @@ async function handle(event: CommentEvent, accounts: Map<string, Account>): Prom
   if (!guide) return;
 
   const ig = event.platform === "instagram";
+  const viaIgLogin = ig && account.via === "instagram";
+  // Instagram Login tokens use graph.instagram.com; Page tokens send from the Page,
+  // including for the Instagram account linked to it.
+  const dmUrl = viaIgLogin ? `${IG}/${event.accountId}/messages` : `${FB}/${account.pageId ?? event.accountId}/messages`;
+  const replyUrl = viaIgLogin ? `${IG}/${event.commentId}/replies`
+    : ig ? `${FB}/${event.commentId}/replies` : `${FB}/${event.commentId}/comments`;
   const message = { text: dmText(guide, account.lang, event.platform) };
   try {
-    await post(`${ig ? IG : FB}/${event.accountId}/messages`, account.token,
-      { recipient: { comment_id: event.commentId }, message });
+    await post(dmUrl, account.token, { recipient: { comment_id: event.commentId }, message });
     console.log(`[meta-webhook] DM sent: ${event.platform} ${account.name} ${guide.keyword} comment=${event.commentId}`);
   } catch (e) {
     // Meta allows one private reply per comment, so a retried webhook lands here harmlessly.
@@ -120,8 +138,7 @@ async function handle(event: CommentEvent, accounts: Map<string, Account>): Prom
   if (process.env.META_PUBLIC_REPLY === "off") return;
   try {
     const text = publicReply(event.commentId, account.lang);
-    await post(ig ? `${IG}/${event.commentId}/replies` : `${FB}/${event.commentId}/comments`,
-      account.token, { message: text });
+    await post(replyUrl, account.token, { message: text });
   } catch (e) {
     console.error(`[meta-webhook] public reply failed comment=${event.commentId}:`, (e as Error).message);
   }

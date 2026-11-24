@@ -32,9 +32,13 @@ for (const [name, token] of tokens("IG_TOKEN_")) {
 for (const [name, token] of tokens("FB_PAGE_TOKEN_")) {
   const base = `https://graph.facebook.com/${VERSION}`;
   try {
-    const me = await call("GET", `${base}/me?fields=id,name`, token);
+    const me = await call("GET", `${base}/me?fields=id,name,instagram_business_account{id,username}`, token);
     await call("POST", `${base}/${me.id}/subscribed_apps?subscribed_fields=feed,messages`, token);
     console.log(`OK  ${name}: Page "${me.name}" (id ${me.id}) subscribed to feed + messages`);
+    const ig = me.instagram_business_account;
+    console.log(ig
+      ? `    linked Instagram: @${ig.username} (id ${ig.id}), answered with this Page token unless an IG_TOKEN_ covers it`
+      : "    no Instagram account linked to this Page");
   } catch (e) {
     console.log(`ERR ${name}: ${e.message}`);
   }
