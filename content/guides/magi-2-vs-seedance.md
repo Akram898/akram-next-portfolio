@@ -9,7 +9,7 @@ tags: ["magi-2", "seedance", "higgsfield", "ai-video", "arabic"]
 tone: "violet"
 video:
   platform: youtube
-  url: ""
+  url: "https://www.youtube.com/watch?v=J8QxIBQF3k8"
 status: live
 ---
 
